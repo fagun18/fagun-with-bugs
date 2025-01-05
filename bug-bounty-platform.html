@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fagun With Bugs - A unique platform offering insights into manual, automation, API, performance, and security testing. Learn, explore, and master software QA.">
+  <meta name="keywords" content="Fagun With Bugs, Software Testing, Manual Testing, Automation Testing, API Testing, Performance Testing, Security Testing, SQA, Bug Bounty">
+  <meta name="author" content="Mejbaur Bahar Fagun">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Fagun With Bugs - Master Software QA & Testing">
+  <meta property="og:description" content="Discover the world of manual, automation, API, performance, and security testing with Fagun With Bugs. Learn, explore, and excel in software QA.">
+  <meta property="og:image" content="https://yourwebsite.com/logo.png">
+  <meta property="og:url" content="https://yourwebsite.com">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fagun With Bugs - Master Software QA & Testing">
+  <meta name="twitter:description" content="Discover the world of manual, automation, API, performance, and security testing with Fagun With Bugs. Learn, explore, and excel in software QA.">
+  <meta name="twitter:image" content="https://yourwebsite.com/logo.png">
+  <title>Fagun With Bugs - Master Software QA & Testing</title>
+  <link rel="canonical" href="https://yourwebsite.com">
+  <link rel="stylesheet" href="styles.css"> <!-- External stylesheet -->
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      overflow-y: auto;
+    }
+
+    /* Header Section */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #004e92, #000428);
+      color: white;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .header .logo img {
+      height: 40px;
+    }
+
+    .header .page-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .header .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .header .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 1rem;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .header .nav-links a:hover {
+      background: #ffcc00;
+      color: #000428;
+    }
+
+    .header .dropdown {
+      position: relative;
+    }
+
+    .header .dropdown .dropbtn {
+      background: #007bff;
+      color: white;
+      border: none;
+      font-size: 1rem;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .header .dropdown .dropbtn:hover {
+      background: #0056b3;
+    }
+
+    .header .dropdown-content {
+      display: none;
+      position: absolute;
+      background: white;
+      color: black;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      top: 100%;
+      left: 0;
+      z-index: 30;
+    }
+
+    .header .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .header .dropdown-content a {
+      display: block;
+      padding: 10px 15px;
+      color: black;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .header .dropdown-content a:hover {
+      background: #f0f0f0;
+      color: #007bff;
+    }
+
+    /* Bug Bounty Animation Section */
+    .bug-animation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      height: 60vh;
+      background: radial-gradient(circle at center, #000428, #004e92);
+      padding-top: 80px;
+    }
+
+    .bug-icon {
+      font-size: 6rem;
+      color: #ffcc00;
+      margin: 20px;
+      text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff9900;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .bug-label {
+      font-size: 1.2rem;
+      color: white;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* Success Table Section */
+    .success-section {
+      width: 100%;
+      padding: 20px;
+      background: white;
+    }
+
+    .success-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #004e92;
+      margin-bottom: 20px;
+    }
+
+    .success-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 auto;
+      overflow-x: auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .success-table th, .success-table td {
+      border: 1px solid #ddd;
+      padding: 15px;
+      text-align: left;
+    }
+
+    .success-table th {
+      background: #004e92;
+      color: white;
+      font-weight: bold;
+    }
+
+    .success-table tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+
+    .success-table tr:hover {
+      background: #ffcc00;
+      color: #000428;
+    }
+
+    .success-table td {
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <div class="header">
+    <div class="logo">
+      <img src="logo.png" alt="Fagun With Bugs Logo">
+    </div>
+    <span class="page-title">Fagun With Bugs 🐞</span>
+    <div class="nav-links">
+      <a href="main.html">Home</a>
+      <a href="https://www.linkedin.com/in/mejbaur/">Author</a>
+      <a href="bug-bounty-platform.html">Bug Bounty</a>
+      <div class="dropdown">
+        <button class="dropbtn">SQA ▼</button>
+        <div class="dropdown-content">
+          <a href="index.html">Testing Tools</a>
+          <a href="sqa-practice-demo.html">SQA Practice</a>
+
+        </div>
+      </div>
+      <a href="blog.html">Blogs</a>
+
+      <a href="https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob" target="_blank" class="get-started">🐞 Get Started For Free</a>
+    </div>
+  </div>
+
+  <!-- Bug Bounty Animation -->
+  <div class="bug-animation">
+    <div>
+      <div class="bug-icon">🐛</div>
+      <div class="bug-label">Cross-Site Scripting</div>
+    </div>
+    <div>
+      <div class="bug-icon">🕷️</div>
+      <div class="bug-label">SQL Injection</div>
+    </div>
+    <div>
+      <div class="bug-icon">🦗</div>
+      <div class="bug-label">Broken Access Control</div>
+    </div>
+    <div>
+      <div class="bug-icon">🐜</div>
+      <div class="bug-label">CSRF</div>
+    </div>
+  </div>
+
+  <!-- Success Table Section -->
+  <div class="success-section">
+    <div class="success-title">Bug Bounty Success</div>
+    <table class="success-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Program Name</th>
+          <th>Bug Type</th>
+          <th>Bounty Amount</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>ExampleCorp</td>
+          <td>SQL Injection</td>
+          <td>$1500</td>
+          <td>2024-11-12</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>SecureTech</td>
+          <td>Cross-Site Scripting</td>
+          <td>$800</td>
+          <td>2024-12-01</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>BugBusters</td>
+          <td>Broken Access Control</td>
+          <td>$2000</td>
+          <td>2024-12-20</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <a href="privacy_policy.html">Privacy Policy</a>
+    <a href="terms_conditions.html">Terms & Conditions</a>
+  </footer>
+</body>
+</html>

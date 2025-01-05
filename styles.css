@@ -1,0 +1,352 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header Section */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo img {
+    width: 50px;
+    height: auto;
+}
+
+.navbar .page-title {
+    font-weight: bold;
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.navbar .nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .nav-links a {
+    margin: 0 5px;
+    padding: 10px 15px;
+    font-weight: bold;
+    color: white;
+}
+
+.navbar .nav-links .get-started {
+    background-color: #ff4081;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.navbar .nav-links .get-started:hover {
+    background-color: #e0356b;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+}
+
+.search-bar input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    font-size: 1rem;
+}
+
+.search-bar button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+/* Main Content */
+.categories-container {
+    margin-top: 140px; /* Adjust for header height */
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.category {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.category h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.tool-list {
+    max-height: 150px;
+    overflow-y: scroll;
+    padding-right: 10px;
+}
+
+.tool-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tool-list ul li {
+    font-size: 1rem;
+    color: #555;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tool-list ul li button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.tool-list ul li button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .navbar .nav-links {
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 10px;
+    }
+
+    .search-bar input {
+        width: 90%;
+        margin-bottom: 10px;
+    }
+
+    .categories {
+        grid-template-columns: 1fr;
+    }
+
+    .tool-list ul li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .tool-list ul li button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.no-results {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    color: #333;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #007bff;
+    color: white;
+    margin-top: auto;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    margin: 0 10px;
+    color: white;
+    font-size: 1rem;
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #007bff;
+    color: white; /* Ensure the button text remains visible */
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Optional rounded corners */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(87, 153, 240); /* Ensure the background is white */
+    min-width: 180px;
+    border: 1px solid #ddd; /* Add a border for distinction */
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    z-index: 1000; /* Ensure it is above other elements */
+}
+
+.dropdown-content a {
+    background-color: rgb(87, 153, 240); /* Keep the background white */
+    color: black; /* Explicitly set text color to black */
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 1rem;
+    border-radius: 3px; /* Optional: add rounding for better visuals */
+}
+
+.dropdown-content a:hover {
+    background-color: #007bff; /* Blue background on hover */
+    color: white; /* White text for contrast */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Show the dropdown content on hover */
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Ensure text remains black even in edge cases */
+.dropdown-content a:active {
+    color: black; /* Maintain black color when active */
+    background-color: #f8f9fa; /* Light gray for feedback */
+}
+
+
+
+
+
+/* Category Colors */
+.manual-testing {
+    background-color: #f1c40f;
+}
+
+.automation-testing {
+    background-color: #2ecc71;
+}
+
+.api-testing {
+    background-color: #3498db;
+}
+
+.performance-testing {
+    background-color: #e67e22;
+}
+
+.security-testing {
+    background-color: #e74c3c;
+}
+
+.ui-testing {
+    background-color: #59e73c;
+}
+
+.mobile-testing {
+    background-color: #3cb7e7;
+}
+.code-testing {
+    background-color: #c2e73c;
+}
+
+.accessibility-testing {
+    background-color: #f1e99b;
+}
+
+.exploratory-testing {
+    background-color: #f1bf84;
+}
+
+.cross-browser-testing {
+    background-color: #e9586b;
+}
+.test-data-management-testing {
+    background-color: #5fb451;
+}
+
+.continuous-testing {
+    background-color: #5187b4;
+}
+
+.bug-reporting-testing {
+    background-color: #e4d722;
+}

@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "Fagun With Bugs",
+    "version": "1.0",
+    "description": "Explore manual, automation, API, performance, and security testing tools.",
+    "icons": {
+      "16": "logo.png",
+      "48": "logo.png",
+      "128": "logo.png"
+    },
+    "permissions": ["storage", "activeTab"],
+    "action": {
+      "default_popup": "index.html",
+      "default_icon": "logo.png"
+    },
+    "background": {
+      "service_worker": "script.js"
+    },
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'"
+    },
+    "web_accessible_resources": [
+      {
+        "resources": ["styles.css", "script.js", "logo.png"],
+        "matches": ["<all_urls>"]
+      }
+    ]
+  }
+  

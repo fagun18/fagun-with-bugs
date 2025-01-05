@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fagun With Bugs - A unique platform offering insights into manual, automation, API, performance, and security testing. Learn, explore, and master software QA.">
+  <meta name="keywords" content="Fagun With Bugs, Software Testing, Manual Testing, Automation Testing, API Testing, Performance Testing, Security Testing, SQA, Bug Bounty">
+  <meta name="author" content="Mejbaur Bahar Fagun">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Fagun With Bugs - Master Software QA & Testing">
+  <meta property="og:description" content="Discover the world of manual, automation, API, performance, and security testing with Fagun With Bugs. Learn, explore, and excel in software QA.">
+  <meta property="og:image" content="https://yourwebsite.com/logo.png">
+  <meta property="og:url" content="https://yourwebsite.com">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fagun With Bugs - Master Software QA & Testing">
+  <meta name="twitter:description" content="Discover the world of manual, automation, API, performance, and security testing with Fagun With Bugs. Learn, explore, and excel in software QA.">
+  <meta name="twitter:image" content="https://yourwebsite.com/logo.png">
+  <title>Fagun With Bugs - Master Software QA & Testing</title>
+  <link rel="canonical" href="https://yourwebsite.com">
+  <link rel="stylesheet" href="styles.css"> <!-- External stylesheet -->
+</head>
+<body>
+  <!-- Header Section -->
+  <div class="header">
+    <!-- Top Navigation -->
+    <nav class="navbar">
+      <div class="logo">
+        <img src="logo.png" alt="Fagun With Bugs Logo">
+      </div>
+      <span class="page-title">Fagun With Bugs 🐞</span>
+      <div class="nav-links">
+        <a href="main.html">Home</a>
+        <a href="https://www.linkedin.com/in/mejbaur/">Author</a>
+        <a href="bug-bounty-platform.html">Bug Bounty</a>
+        <div class="dropdown">
+          <button class="dropbtn">SQA ▼</button>
+          <div class="dropdown-content">
+            <a href="index.html">Testing Tools</a>
+            <a href="sqa-practice-demo.html">SQA Practice</a>
+
+          </div>
+        </div>
+        <a href="blog.html">Blogs</a>
+
+        <a
+          href="https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob"
+          target="_blank"
+          class="get-started"
+        >
+          🐞 Get Started For Free
+        </a>
+      </div>
+      
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Search Tools..."
+        oninput="filterTools()"
+      />
+      <button>🔍</button>
+    </div>
+  </div>
+
+  <!-- Alert Message -->
+  <div id="no-results-message" class="no-results hidden">
+    🤔 There have no Tools found. Use different keywords.
+  </div>
+
+  <!-- Main Content -->
+  <div class="categories-container">
+    <div class="categories">
+
+      <!-- Manual Testing -->
+      <div class="category manual-testing">
+        <h2>Manual Testing</h2>
+        <div class="tool-list">
+          <ul>
+            <li>TestLodge <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>qTest <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Zephyr <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>TestRail <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>PractiTest <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Automation Testing -->
+      <div class="category automation-testing">
+        <h2>Automation Testing</h2>
+        <div class="tool-list">
+          <ul>
+            <li>Selenium <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Cypress <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Katalon Studio <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>TestComplete <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Robot Framework <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- API Testing -->
+      <div class="category api-testing">
+        <h2>API Testing</h2>
+        <div class="tool-list">
+          <ul>
+            <li>Postman <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Insomnia <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>SoapUI <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>K6 <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Swagger <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Additional Sections Matching the Design -->
+      <div class="category performance-testing">
+        <h2>Performance Testing</h2>
+        <div class="tool-list">
+          <ul>
+            <li>LoadRunner <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>JMeter <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Gatling <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>BlazeMeter <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>NeoLoad <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="category security-testing">
+        <h2>Security Testing</h2>
+        <div class="tool-list">
+          <ul>
+            <li>Burp Suite <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>OWASP ZAP <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Nessus <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Acunetix <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Veracode <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="category ui-testing">
+        <h2>UI Testing</h2>
+        <div class="tool-list">
+          <ul>
+            <li>Burp Suite <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>OWASP ZAP <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Nessus <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Acunetix <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Veracode <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div class="category mobile-testing">
+        <h2>Mobile Testing</h2>
+        <div class="tool-list">
+          <ul>
+            <li>Burp Suite <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>OWASP ZAP <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Nessus <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Acunetix <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Veracode <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="category code-testing">
+        <h2>Code Quality Testing</h2>
+        <div class="tool-list">
+          <ul>
+            <li>Burp Suite <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>OWASP ZAP <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Nessus <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Acunetix <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Veracode <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="category accessibility-testing">
+        <h2>Accessibility Testing</h2>
+        <div class="tool-list">
+          <ul>
+            <li>Burp Suite <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>OWASP ZAP <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Nessus <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Acunetix <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Veracode <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="category exploratory-testing">
+        <h2>Exploratory Testing</h2>
+        <div class="tool-list">
+          <ul>
+            <li>Burp Suite <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>OWASP ZAP <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Nessus <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Acunetix <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Veracode <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="category cross-browser-testing">
+        <h2>Cross-Browser Testing</h2>
+        <div class="tool-list">
+          <ul>
+            <li>Burp Suite <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>OWASP ZAP <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Nessus <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Acunetix <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Veracode <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="category test-data-management-testing">
+        <h2>Test Data Management Testing</h2>
+        <div class="tool-list">
+          <ul>
+            <li>Burp Suite <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>OWASP ZAP <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Nessus <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Acunetix <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Veracode <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="category continuous-testing">
+        <h2>Continuous Testing</h2>
+        <div class="tool-list">
+          <ul>
+            <li>Burp Suite <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>OWASP ZAP <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Nessus <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Acunetix <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Veracode <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="category bug-reporting-testing">
+        <h2>Bug Reporting</h2>
+        <div class="tool-list">
+          <ul>
+            <li>Burp Suite <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>OWASP ZAP <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Nessus <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Acunetix <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+            <li>Veracode <button onclick="redirectTo('https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob')">Try Now</button></li>
+          </ul>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <a href="privacy_policy.html">Privacy Policy</a>
+    <a href="terms_conditions.html">Terms & Conditions</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
