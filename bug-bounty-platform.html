@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fagun With Bugs - A unique platform offering insights into manual, automation, API, performance, and security testing. Learn, explore, and master software QA.">
+  <meta name="keywords" content="Fagun With Bugs, Software Testing, Manual Testing, Automation Testing, API Testing, Performance Testing, Security Testing, SQA, Bug Bounty">
+  <meta name="author" content="Mejbaur Bahar Fagun">
   <title>Fagun With Bugs - Master Software QA & Testing</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css"> <!-- External stylesheet -->
   <style>
-    /* General Styles */
+    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -17,50 +20,145 @@
       width: 100%;
       height: 100%;
       font-family: Arial, sans-serif;
-      overflow-y: scroll;
+      overflow-y: auto;
+      background: #f4f4f4;
     }
 
     /* Header Section */
     .header {
-      position: fixed;
+      position: sticky;
       top: 0;
       width: 100%;
       background: linear-gradient(90deg, #004e92, #000428);
       color: white;
-      z-index: 20;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
-    /* Bug Bounty Animation Section */
+    .header .logo img {
+      height: 40px;
+    }
+
+    .header .page-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .header .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .header .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 1rem;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .header .nav-links a:hover {
+      background: #ffcc00;
+      color: #000428;
+    }
+
+    /* Main Section */
+    .main {
+      padding: 20px;
+      margin-top: 60px;
+    }
+
     .bug-animation {
-      margin-top: 70px; /* Adjust for the fixed header */
       display: flex;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      min-height: 60vh;
+      height: auto;
       background: radial-gradient(circle at center, #000428, #004e92);
-      padding-top: 20px;
+      color: white;
+      padding: 20px 10px;
+      border-radius: 5px;
     }
 
-    /* Success Table Section */
+    .bug-icon {
+      font-size: 4rem;
+      color: #ffcc00;
+      margin: 20px;
+      text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff9900;
+      animation: bounce 2s infinite;
+    }
+
+    .bug-label {
+      font-size: 1.2rem;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Table Section */
     .success-section {
-      width: 100%;
+      background: #fff;
+      margin-top: 20px;
       padding: 20px;
-      background: white;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .success-title {
+      text-align: center;
+      font-size: 1.8rem;
+      color: #004e92;
+      margin-bottom: 20px;
+    }
+
+    .success-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 auto;
+    }
+
+    .success-table th, .success-table td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .success-table th {
+      background: #004e92;
+      color: white;
+    }
+
+    .success-table tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+
+    .success-table tr:hover {
+      background: #ffcc00;
+      color: #000428;
     }
 
     /* Footer Section */
     footer {
-      width: 100%;
-      text-align: center;
-      padding: 10px;
-      background-color: #007bff;
+      background: #004e92;
       color: white;
+      text-align: center;
+      padding: 10px 20px;
+      margin-top: 20px;
+      border-radius: 5px;
     }
   </style>
 </head>
@@ -72,65 +170,62 @@
     </div>
     <span class="page-title">Fagun With Bugs 🐞</span>
     <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="https://www.linkedin.com/in/mejbaur/">Author</a>
-      <a href="bug-bounty-platform.html">Bug Bounty</a>
+      <a href="#">Home</a>
+      <a href="#">Author</a>
+      <a href="#">Bug Bounty</a>
     </div>
   </div>
 
-  <!-- Bug Bounty Animation -->
-  <div class="bug-animation">
-    <div>
-      <div class="bug-icon">🐛</div>
-      <div class="bug-label">Cross-Site Scripting</div>
+  <!-- Main Content -->
+  <div class="main">
+    <!-- Bug Animation -->
+    <div class="bug-animation">
+      <div>
+        <div class="bug-icon">🐛</div>
+        <div class="bug-label">Cross-Site Scripting</div>
+      </div>
+      <div>
+        <div class="bug-icon">🕷️</div>
+        <div class="bug-label">SQL Injection</div>
+      </div>
     </div>
-  </div>
 
-  <!-- Success Table Section -->
-  <div class="success-section">
-    <div class="success-title">Bug Bounty Success</div>
-    <table class="success-table">
-      <thead>
-        <tr>
-          <td>1</td>
-          <td></td>
-          <td>SQL Injection</td>
-          <td>$1500</td>
-          <td>2024-11-12</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td></td>
-          <td>Cross-Site Scripting</td>
-          <td>$800</td>
-          <td>2024-12-01</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td></td>
-          <td>Broken Access Control</td>
-          <td>$2000</td>
-          <td>2024-12-20</td>
-        </tr>
+    <!-- Success Table -->
+    <div class="success-section">
+      <div class="success-title">Bug Bounty Success</div>
+      <table class="success-table">
+        <thead>
           <tr>
-          <td>4</td>
-          <td>Nasa</td>
-          <td>Sensitive Data Exposure</td>
-          <td></td>
-          <td>2024-09-05</td>
-        </tr>
+            <th>#</th>
+            <th>Program Name</th>
+            <th>Bug Type</th>
+            <th>Bounty Amount</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
           <tr>
-          <td>5</td>
-          <td>nsw.gov.au</td>
-          <td>403 Bypass</td>
-          <td
-      </tbody>
-    </table>
+            <td>1</td>
+            <td>Program A</td>
+            <td>SQL Injection</td>
+            <td>$1500</td>
+            <td>2024-11-12</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Program B</td>
+            <td>XSS</td>
+            <td>$800</td>
+            <td>2024-12-01</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <!-- Footer Section -->
   <footer>
-    &copy; 2025 Fagun With Bugs
+    © 2025 Fagun With Bugs | All Rights Reserved
   </footer>
 </body>
 </html>
