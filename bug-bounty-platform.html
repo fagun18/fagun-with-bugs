@@ -18,8 +18,9 @@
   <meta name="twitter:image" content="https://yourwebsite.com/logo.png">
   <title>Fagun With Bugs - Master Software QA & Testing</title>
   <link rel="canonical" href="https://yourwebsite.com">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css"> <!-- External stylesheet -->
   <style>
+    /* General Styles */
     * {
       margin: 0;
       padding: 0;
@@ -33,6 +34,7 @@
       overflow-y: auto;
     }
 
+    /* Header Section */
     .header {
       position: fixed;
       top: 0;
@@ -126,6 +128,7 @@
       color: #007bff;
     }
 
+    /* Bug Bounty Animation Section */
     .bug-animation {
       display: flex;
       justify-content: center;
@@ -160,6 +163,7 @@
       text-align: center;
     }
 
+    /* Success Table Section */
     .success-section {
       width: 100%;
       padding: 20px;
@@ -202,6 +206,11 @@
       color: #000428;
     }
 
+    .success-table td {
+      text-align: center;
+    }
+
+    /* Footer */
     footer {
       position: absolute;
       bottom: 0;
@@ -221,6 +230,7 @@
   </style>
 </head>
 <body>
+  <!-- Header Section -->
   <div class="header">
     <div class="logo">
       <img src="logo.png" alt="Fagun With Bugs Logo">
@@ -235,32 +245,106 @@
         <div class="dropdown-content">
           <a href="sqa-tool.html">Testing Tools</a>
           <a href="sqa-practice-demo.html">SQA Practice</a>
+
         </div>
       </div>
       <a href="https://www.linkedin.com/newsletters/7049699805199020032/">Blogs</a>
-      <a href="contact.html">Contact</a>
+
+      <a href="https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob" target="_blank" class="get-started">🐞 Get Started For Free</a>
     </div>
   </div>
 
-  <div class="main-content">
-    <h1>Welcome to Fagun With Bugs 🐞</h1>
-    <p>Discover the latest in bug bounty, software quality assurance, and security testing. Learn, share, and grow with our community!</p>
-    <div class="cta-buttons">
-      <a class="button" href="bug-bounty-platform.html">Explore Bug Bounty</a>
-      <a class="button" href="sqa-practice-demo.html">Practice SQA</a>
+  <!-- Bug Bounty Animation -->
+  <div class="bug-animation">
+    <div>
+      <div class="bug-icon">🐛</div>
+      <div class="bug-label">Cross-Site Scripting</div>
+    </div>
+    <div>
+      <div class="bug-icon">🕷️</div>
+      <div class="bug-label">SQL Injection</div>
+    </div>
+    <div>
+      <div class="bug-icon">🦗</div>
+      <div class="bug-label">Broken Access Control</div>
+    </div>
+    <div>
+      <div class="bug-icon">🐜</div>
+      <div class="bug-label">CSRF</div>
     </div>
   </div>
 
+  <!-- Success Table Section -->
+  <div class="success-section">
+    <div class="success-title">Bug Bounty Success</div>
+    <table class="success-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Program Name</th>
+          <th>Bug Type</th>
+          <th>Bounty Amount</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td></td>
+          <td>SQL Injection</td>
+          <td>$1500</td>
+          <td>2024-11-12</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td></td>
+          <td>Cross-Site Scripting</td>
+          <td>$800</td>
+          <td>2024-12-01</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td></td>
+          <td>Broken Access Control</td>
+          <td>$2000</td>
+          <td>2024-12-20</td>
+        </tr>
+          <tr>
+          <td>4</td>
+          <td>Nasa</td>
+          <td>Sensitive Data Exposure</td>
+          <td></td>
+          <td>2024-09-05</td>
+        </tr>
+          <tr>
+          <td>5</td>
+          <td>nsw.gov.au</td>
+          <td>403 Bypass</td>
+          <td></td>
+          <td>2024-08-26</td>
+        </tr>
+          <tr>
+          <td>6</td>
+          <td>ChatGPT</td>
+          <td>Business Logic Vulnerability</td>
+          <td></td>
+          <td>2024-09-13</td>
+        </tr>
+          <tr>
+          <td>7</td>
+          <td>Nasa</td>
+          <td>Stored XSS</td>
+          <td></td>
+          <td>2024-08-13</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer -->
   <footer>
-    <div class="footer-content">
-      <p>© 2025 Fagun With Bugs. All rights reserved.</p>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/mejbaur/" target="_blank">LinkedIn</a>
-        <a href="https://github.com/mejbaur" target="_blank">GitHub</a>
-        <a href="https://twitter.com/fagun_bugs" target="_blank">Twitter</a>
-      </div>
-    </div>
+    <a href="privacy_policy.html">Privacy Policy</a>
+    <a href="terms_conditions.html">Terms & Conditions</a>
   </footer>
-
 </body>
 </html>
