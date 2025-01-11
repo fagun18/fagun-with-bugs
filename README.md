@@ -1,6 +1,6 @@
-# 🎉 Fagun With Bugs SQA Tools 🐞  
+![image](https://github.com/user-attachments/assets/40d640f9-ab17-4210-bfb3-6abaf8a6e7d3)# 🎉 Fagun With Bugs SQA Tools 🐞  
 
-![Banner](https://your-image-link/banner.png)
+![Banner]([https://your-image-link/banner.png](https://fagun18.github.io/fagun-with-bugs/logo.png))
 
 ---
 
@@ -82,7 +82,7 @@
 Follow these simple steps to get started:
 
 ```bash
-1. Visit the [Chrome Web Store](https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob).
+1. Visit the  [Chrome Web Store](https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob).
 2. Click "Add to Chrome."
 3. Open the extension and explore your testing tools!
 ```
@@ -92,7 +92,7 @@ Follow these simple steps to get started:
 ## 🎥 Demo Animation
 
 Check out how Fagun SQA Testing Tools works:  
-![Demo](https://your-image-link/demo.gif)  
+![Demo]([https://your-image-link/demo.gif](https://www.youtube.com/watch?v=hg-PhXhTvQ4))  
 
 💡 **Pro Tip:** Use the **favorites feature** to save your frequently used tools for quicker access.
 
@@ -137,4 +137,3 @@ We appreciate your support and trust in **Fagun With Bugs SQA Tools**. Together,
 **Happy Testing!** 🎉
 ```
 
-This format keeps the sections concise and visually engaging, making it suitable for a GitHub README. Let me know if you’d like any further changes!
