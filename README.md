@@ -1,6 +1,5 @@
 ![image](https://github.com/user-attachments/assets/40d640f9-ab17-4210-bfb3-6abaf8a6e7d3)# 🎉 Fagun With Bugs SQA Tools 🐞  
 
-![Banner]([https://your-image-link/banner.png](https://fagun18.github.io/fagun-with-bugs/logo.png))
 
 ---
 
