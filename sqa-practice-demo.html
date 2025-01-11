@@ -33,7 +33,7 @@
       padding: 20px 40px;
       background: linear-gradient(90deg, #004e92, #001f3f);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      z-index: 100;
+      z-index: 1000;
     }
 
     .header .page-title {
@@ -138,19 +138,15 @@
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
-      height: 70vh;
-      position: relative;
-      overflow: hidden;
-      padding: 100px 40px; /* Adjust padding for fixed header */
+      min-height: 70vh; /* Adjust for responsiveness */
+      padding-top: 150px; /* Offset for fixed header */
+      padding-left: 40px;
       background: linear-gradient(to bottom, #004e92, #001f3f);
       box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
     }
 
     .test-cases {
-      position: relative;
-      width: 90%;
-      height: auto;
-      padding: 20px;
+      width: 100%;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
@@ -163,13 +159,40 @@
       padding: 20px;
       text-align: center;
       font-size: 1.2rem;
-      position: relative;
-      overflow: hidden;
+      animation: fade-in 2s ease-in-out forwards;
+      opacity: 0;
+    }
+
+    .test-case:nth-child(1) {
+      animation-delay: 0.5s;
+    }
+
+    .test-case:nth-child(2) {
+      animation-delay: 1s;
+    }
+
+    .test-case:nth-child(3) {
+      animation-delay: 1.5s;
+    }
+
+    .test-case:nth-child(4) {
+      animation-delay: 2s;
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Links Section */
     .links-section {
-      padding: 100px 40px 40px; /* Added padding to account for fixed header */
+      padding: 60px 40px; /* Adjust for fixed header */
       text-align: left;
     }
 
@@ -201,6 +224,19 @@
     }
   </style>
 </head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <span class="page-title">Advanced Software Testing Resources</span>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="https://www.linkedin.com/in/mejbaur/">Author</a>
+      <a href="bug-bounty-platform.html">Bug Bounty</a>
+      <div class="dropdown">
+        <button class="dropbtn">SQA ▼</button>
+        <div class="dropdown-content">
+          <a href="sqa-tool.html">Testing Tools</a>
+          <a href="sqa-practice-demo.html">SQA Practice</a>
         </div>
       </div>
       <a href="https://www.linkedin.com/newsletters/7049699805199020032/">Blogs</a>
@@ -211,47 +247,18 @@
   <!-- Animation Section -->
   <div class="animation-section">
     <div class="test-cases">
-      <div class="test-case">
-        <div class="icon">📋</div>
-        <span>Write Test Cases</span>
-      </div>
-      <div class="test-case">
-        <div class="icon">🔍</div>
-        <span>Analyze Defects</span>
-      </div>
-      <div class="test-case">
-        <div class="icon">⚙️</div>
-        <span>Execute Automation</span>
-      </div>
-      <div class="test-case">
-        <div class="icon">🚀</div>
-        <span>Performance Testing</span>
-      </div>
+      <div class="test-case">📋 Write Test Cases</div>
+      <div class="test-case">🔍 Analyze Defects</div>
+      <div class="test-case">⚙️ Execute Automation</div>
+      <div class="test-case">🚀 Performance Testing</div>
     </div>
   </div>
 
   <!-- Links Section -->
-  <div class="links-section" id="resources">
+  <div class="links-section">
     <h2>Practice Demo Websites for Software Testing</h2>
-    <a href="https://lnkd.in/dtyy3fba" target="_blank">➡️ Welcome to the Internet</a>
-    <a href="https://lnkd.in/duPXCdsZ" target="_blank">➡️ OWASP Juice Shop</a>
-    <a href="https://lnkd.in/dSrezHvK" target="_blank">➡️ Tool Shop Demo</a>
-    <a href="https://lnkd.in/d3NFkzUF" target="_blank">➡️ Parabank Demo Website</a>
-    <a href="https://lnkd.in/dG6_wabN" target="_blank">➡️ LambdaTest ECommerce Playground</a>
-    <a href="https://lnkd.in/d-FAyU7w" target="_blank">➡️ Swag Labs</a>
-  </div>
-
-
-
-    <!-- Links Section -->
-  <div class="links-section" id="resources">
-    <h2>YouTube Channel for Learning Software Testing</h2>
-    <a href="https://lnkd.in/dtyy3fba" target="_blank">➡️ Welcome to the Internet</a>
-    <a href="https://lnkd.in/duPXCdsZ" target="_blank">➡️ OWASP Juice Shop</a>
-    <a href="https://lnkd.in/dSrezHvK" target="_blank">➡️ Tool Shop Demo</a>
-    <a href="https://lnkd.in/d3NFkzUF" target="_blank">➡️ Parabank Demo Website</a>
-    <a href="https://lnkd.in/dG6_wabN" target="_blank">➡️ LambdaTest ECommerce Playground</a>
-    <a href="https://lnkd.in/d-FAyU7w" target="_blank">➡️ Swag Labs</a>
+    <a href="#">➡️ Link 1</a>
+    <a href="#">➡️ Link 2</a>
   </div>
 
   <!-- Footer -->
