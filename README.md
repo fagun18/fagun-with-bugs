@@ -91,8 +91,8 @@ Follow these simple steps to get started:
 ## 🎥 Demo Animation
 
 Check out how Fagun SQA Testing Tools works:  
+[![Demo](https://img.youtube.com/vi/hg-PhXhTvQ4/0.jpg)](https://www.youtube.com/watch?v=hg-PhXhTvQ4)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/hg-PhXhTvQ4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 💡 **Pro Tip:** Use the **favorites feature** to save your frequently used tools for quicker access.
