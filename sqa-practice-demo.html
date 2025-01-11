@@ -321,7 +321,8 @@
     </div>
   </div>
 
-  <!-- Links Section -->
+<!-- Links Section -->
+<div class="scrollable-links">
   <div class="links-section" id="resources">
     <h2>Practice Demo Websites for Software Testing</h2>
     <a href="https://lnkd.in/dtyy3fba" target="_blank">➡️ Welcome to the Internet</a>
@@ -330,7 +331,45 @@
     <a href="https://lnkd.in/d3NFkzUF" target="_blank">➡️ Parabank Demo Website</a>
     <a href="https://lnkd.in/dG6_wabN" target="_blank">➡️ LambdaTest ECommerce Playground</a>
     <a href="https://lnkd.in/d-FAyU7w" target="_blank">➡️ Swag Labs</a>
+    <a href="https://example.com/demo1" target="_blank">➡️ New Demo Link 1</a>
+    <a href="https://example.com/demo2" target="_blank">➡️ New Demo Link 2</a>
+    <a href="https://example.com/demo3" target="_blank">➡️ New Demo Link 3</a>
+    <a href="https://example.com/demo4" target="_blank">➡️ New Demo Link 4</a>
   </div>
+</div>
+
+<style>
+  /* Make the links section scrollable while keeping other sections visible */
+  .scrollable-links {
+    position: absolute;
+    top: 70vh; /* Start just below the animation section */
+    bottom: 60px; /* Keep the footer always visible */
+    width: 100%;
+    overflow-y: auto;
+    padding: 20px 40px;
+    background: linear-gradient(to bottom, #001f3f, #00264d); /* Matches overall design */
+  }
+
+  .scrollable-links .links-section {
+    max-height: 100%;
+    overflow-y: auto;
+  }
+
+  /* Optional: Style the scrollbar */
+  .scrollable-links::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scrollable-links::-webkit-scrollbar-thumb {
+    background: #ffcc00;
+    border-radius: 10px;
+  }
+
+  .scrollable-links::-webkit-scrollbar-thumb:hover {
+    background: #ffcc33;
+  }
+</style>
+
 
   <!-- Footer -->
   <footer>
