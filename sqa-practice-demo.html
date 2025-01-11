@@ -17,64 +17,325 @@
   <meta name="twitter:description" content="Discover the world of manual, automation, API, performance, and security testing with Fagun With Bugs. Learn, explore, and excel in software QA.">
   <meta name="twitter:image" content="https://yourwebsite.com/logo.png">
   <title>Fagun With Bugs - Advanced Software Testing Resources</title>
+  <link rel="canonical" href="https://yourwebsite.com">
+  <link rel="stylesheet" href="styles.css"> <!-- External stylesheet -->
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #001f3f, #004e92);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Header Section */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: linear-gradient(90deg, #004e92, #001f3f);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+    }
+
+    .header .page-title {
+      font-size: 2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .header .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .header .nav-links a {
+      color: #ffcc00;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 1rem;
+      padding: 10px 20px;
+      border: 2px solid #ffcc00;
+      border-radius: 25px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .header .nav-links a:hover {
+      background: #ffcc00;
+      color: #001f3f;
+      transform: scale(1.1);
+    }
+
+    .header .dropdown {
+      position: relative;
+    }
+
+    .header .dropbtn {
+      background: #ffcc00;
+      color: #001f3f;
+      border: none;
+      font-size: 1rem;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .header .dropbtn:hover {
+      background: #ffcc33;
+      transform: scale(1.05);
+    }
+
+    .header .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      color: #001f3f;
+      min-width: 200px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 200;
+    }
+
+    .header .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .header .dropdown-content a {
+      display: block;
+      padding: 10px 15px;
+      color: #001f3f;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    .header .dropdown-content a:hover {
+      background: #f0f0f0;
+      color: #004e92;
+    }
+
+    .header .get-started {
+      background: #f8f8f6;
+      color: #ff0800; /* Text matches background initially */
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 10px 25px;
+      border: 2px solid #ffcc00;
+      border-radius: 25px;
+      transition: background 0.3s, color 0.3s, transform 0.3s;
+    }
+
+    .header .get-started:hover {
+      background: #ffcc33;
+      color: black; /* Changes to black on hover */
+      transform: scale(1.1);
+    }
+
+    /* Animation Section */
+    .animation-section {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      height: 70vh;
+      position: relative;
+      overflow: hidden;
+      padding-left: 40px;
+      background: linear-gradient(to bottom, #004e92, #001f3f);
+      box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .test-cases {
+      position: relative;
+      width: 90%;
+      height: auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .test-case {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.2rem;
+      position: relative;
+      overflow: hidden;
+      animation: fade-in 2s ease-in-out forwards;
+      opacity: 0;
+    }
+
+    .test-case:nth-child(1) {
+      animation-delay: 0.5s;
+    }
+
+    .test-case:nth-child(2) {
+      animation-delay: 1s;
+    }
+
+    .test-case:nth-child(3) {
+      animation-delay: 1.5s;
+    }
+
+    .test-case:nth-child(4) {
+      animation-delay: 2s;
+    }
+
+    .icon {
+      width: 60px;
+      height: 60px;
+      background: #ffcc00;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #001f3f;
+      margin: 0 auto 10px;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Links Section */
+    .links-section {
+      padding: 100px 40px 40px; /* Added padding to account for fixed header */
+      text-align: left;
+    }
+
+    .links-section h2 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    .links-section a {
+      display: block;
+      margin: 10px 0;
+      font-size: 1.2rem;
+      color: #ffcc00;
+      text-decoration: none;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .links-section a:hover {
+      color: white;
+      transform: translateX(10px);
+    }
+
+    /* Footer */
+    footer {
+      padding: 20px;
+      text-align: center;
+      background: #001f3f;
+      color: #ffcc00;
+      position: relative;
+    }
+
+    footer a {
+      color: #ffcc00;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+  </style>
 </head>
-<body style="font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background: linear-gradient(to bottom, #001f3f, #004e92); color: white;">
+<body>
   <!-- Header Section -->
-  <div style="position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: linear-gradient(90deg, #004e92, #001f3f); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 100;">
-    <span style="font-size: 2rem; font-weight: bold; text-transform: uppercase;">Advanced Software Testing Resources</span>
-    <div style="display: flex; align-items: center;">
-      <a href="index.html" style="color: #ffcc00; text-decoration: none; margin: 0 15px; font-size: 1rem; padding: 10px 20px; border: 2px solid #ffcc00; border-radius: 25px; transition: all 0.3s ease-in-out;">Home</a>
-      <a href="https://www.linkedin.com/in/mejbaur/" style="color: #ffcc00; text-decoration: none; margin: 0 15px; font-size: 1rem; padding: 10px 20px; border: 2px solid #ffcc00; border-radius: 25px; transition: all 0.3s ease-in-out;">Author</a>
-      <a href="bug-bounty-platform.html" style="color: #ffcc00; text-decoration: none; margin: 0 15px; font-size: 1rem; padding: 10px 20px; border: 2px solid #ffcc00; border-radius: 25px; transition: all 0.3s ease-in-out;">Bug Bounty</a>
-      <div style="position: relative;">
-        <button style="background: #ffcc00; color: #001f3f; border: none; font-size: 1rem; padding: 10px 20px; border-radius: 25px; cursor: pointer; transition: background 0.3s, transform 0.3s;">SQA ▼</button>
-        <div style="display: none; position: absolute; top: 100%; left: 0; background: white; color: #001f3f; min-width: 200px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 200;">
-          <a href="sqa-tool.html" style="display: block; padding: 10px 15px; color: #001f3f; text-decoration: none; font-size: 1rem;">Testing Tools</a>
-          <a href="sqa-practice-demo.html" style="display: block; padding: 10px 15px; color: #001f3f; text-decoration: none; font-size: 1rem;">SQA Practice</a>
+  <div class="header">
+    <span class="page-title">Advanced Software Testing Resources</span>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="https://www.linkedin.com/in/mejbaur/">Author</a>
+      <a href="bug-bounty-platform.html">Bug Bounty</a>
+      <div class="dropdown">
+        <button class="dropbtn">SQA ▼</button>
+        <div class="dropdown-content">
+          <a href="sqa-tool.html">Testing Tools</a>
+          <a href="sqa-practice-demo.html">SQA Practice</a>
         </div>
       </div>
-      <a href="https://www.linkedin.com/newsletters/7049699805199020032/" style="color: #ffcc00; text-decoration: none; margin: 0 15px; font-size: 1rem; padding: 10px 20px; border: 2px solid #ffcc00; border-radius: 25px; transition: all 0.3s ease-in-out;">Blogs</a>
-      <a href="https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob" target="_blank" style="background: #f8f8f6; color: #ff0800; text-decoration: none; font-size: 1rem; padding: 10px 25px; border: 2px solid #ffcc00; border-radius: 25px; transition: background 0.3s, color 0.3s, transform 0.3s;">🐞 Get Started For Free</a>
+      <a href="https://www.linkedin.com/newsletters/7049699805199020032/">Blogs</a>
+      <a href="https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob" target="_blank" class="get-started">🐞 Get Started For Free</a>
     </div>
   </div>
 
   <!-- Animation Section -->
-  <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; height: 70vh; position: relative; overflow: hidden; padding-left: 40px; background: linear-gradient(to bottom, #004e92, #001f3f); box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);">
-    <div style="position: relative; width: 90%; height: auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-      <div style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 10px; padding: 20px; text-align: center; font-size: 1.2rem; position: relative; overflow: hidden; opacity: 0; animation: fade-in 2s ease-in-out forwards;">
-        <div style="width: 60px; height: 60px; background: #ffcc00; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #001f3f; margin: 0 auto 10px;">📋</div>
+  <div class="animation-section">
+    <div class="test-cases">
+      <div class="test-case">
+        <div class="icon">📋</div>
         <span>Write Test Cases</span>
       </div>
-      <div style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 10px; padding: 20px; text-align: center; font-size: 1.2rem; position: relative; overflow: hidden; opacity: 0; animation: fade-in 2s ease-in-out forwards; animation-delay: 0.5s;">
-        <div style="width: 60px; height: 60px; background: #ffcc00; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #001f3f; margin: 0 auto 10px;">🔍</div>
+      <div class="test-case">
+        <div class="icon">🔍</div>
         <span>Analyze Defects</span>
       </div>
-      <div style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 10px; padding: 20px; text-align: center; font-size: 1.2rem; position: relative; overflow: hidden; opacity: 0; animation: fade-in 2s ease-in-out forwards; animation-delay: 1s;">
-        <div style="width: 60px; height: 60px; background: #ffcc00; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #001f3f; margin: 0 auto 10px;">⚙️</div>
+      <div class="test-case">
+        <div class="icon">⚙️</div>
         <span>Execute Automation</span>
       </div>
-      <div style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 10px; padding: 20px; text-align: center; font-size: 1.2rem; position: relative; overflow: hidden; opacity: 0; animation: fade-in 2s ease-in-out forwards; animation-delay: 1.5s;">
-        <div style="width: 60px; height: 60px; background: #ffcc00; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #001f3f; margin: 0 auto 10px;">🚀</div>
+      <div class="test-case">
+        <div class="icon">🚀</div>
         <span>Performance Testing</span>
       </div>
     </div>
   </div>
 
   <!-- Links Section -->
-  <div style="padding: 100px 40px 40px; text-align: left;">
-    <h2 style="margin-bottom: 20px; font-size: 2rem;">Practice Demo Websites for Software Testing</h2>
-    <a href="https://lnkd.in/dtyy3fba" target="_blank" style="display: block; margin: 10px 0; font-size: 1.2rem; color: #ffcc00; text-decoration: none; transition: transform 0.3s, color 0.3s;">➡️ Welcome to the Internet</a>
-    <a href="https://lnkd.in/duPXCdsZ" target="_blank" style="display: block; margin: 10px 0; font-size: 1.2rem; color: #ffcc00; text-decoration: none; transition: transform 0.3s, color 0.3s;">➡️ OWASP Juice Shop</a>
-    <a href="https://lnkd.in/dSrezHvK" target="_blank" style="display: block; margin: 10px 0; font-size: 1.2rem; color: #ffcc00; text-decoration: none; transition: transform 0.3s, color 0.3s;">➡️ Tool Shop Demo</a>
-    <a href="https://lnkd.in/d3NFkzUF" target="_blank" style="display: block; margin: 10px 0; font-size: 1.2rem; color: #ffcc00; text-decoration: none; transition: transform 0.3s, color 0.3s;">➡️ Parabank Demo Website</a>
-    <a href="https://lnkd.in/dG6_wabN" target="_blank" style="display: block; margin: 10px 0; font-size: 1.2rem; color: #ffcc00; text-decoration: none; transition: transform 0.3s, color 0.3s;">➡️ LambdaTest ECommerce Playground</a>
-    <a href="https://lnkd.in/d-FAyU7w" target="_blank" style="display: block; margin: 10px 0; font-size: 1.2rem; color: #ffcc00; text-decoration: none; transition: transform 0.3s, color 0.3s;">➡️ Swag Labs</a>
+  <div class="links-section" id="resources">
+    <h2>Practice Demo Websites for Software Testing</h2>
+    <a href="https://lnkd.in/dtyy3fba" target="_blank">➡️ Welcome to the Internet</a>
+    <a href="https://lnkd.in/duPXCdsZ" target="_blank">➡️ OWASP Juice Shop</a>
+    <a href="https://lnkd.in/dSrezHvK" target="_blank">➡️ Tool Shop Demo</a>
+    <a href="https://lnkd.in/d3NFkzUF" target="_blank">➡️ Parabank Demo Website</a>
+    <a href="https://lnkd.in/dG6_wabN" target="_blank">➡️ LambdaTest ECommerce Playground</a>
+    <a href="https://lnkd.in/d-FAyU7w" target="_blank">➡️ Swag Labs</a>
   </div>
 
   <!-- Footer -->
-  <footer style="padding: 20px; text-align: center; background: #001f3f; color: #ffcc00; position: relative;">
-    <a href="privacy_policy.html" style="color: #ffcc00; text-decoration: none; margin: 0 10px;">Privacy Policy</a>
-    <a href="terms_conditions.html" style="color: #ffcc00; text-decoration: none; margin: 0 10px;">Terms & Conditions</a>
+  <footer>
+    <a href="privacy_policy.html">Privacy Policy</a>
+    <a href="terms_conditions.html">Terms & Conditions</a>
   </footer>
 </body>
 </html>
