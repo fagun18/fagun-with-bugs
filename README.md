@@ -82,10 +82,9 @@
 Follow these simple steps to get started:
 
 ```bash
-1. Visit the  [Chrome Web Store](https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob).
+1. Visit the [Chrome Web Store](https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/<correct-extension-id>).
 2. Click "Add to Chrome."
 3. Open the extension and explore your testing tools!
-```
 
 ---
 
