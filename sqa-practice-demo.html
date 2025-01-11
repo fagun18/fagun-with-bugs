@@ -3,7 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fagun With Bugs - A unique platform offering insights into manual, automation, API, performance, and security testing. Learn, explore, and master software QA.">
+  <meta name="keywords" content="Fagun With Bugs, Software Testing, Manual Testing, Automation Testing, API Testing, Performance Testing, Security Testing, SQA, Bug Bounty">
+  <meta name="author" content="Mejbaur Bahar Fagun">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Fagun With Bugs - Master Software QA & Testing">
+  <meta property="og:description" content="Discover the world of manual, automation, API, performance, and security testing with Fagun With Bugs. Learn, explore, and excel in software QA.">
+  <meta property="og:image" content="https://yourwebsite.com/logo.png">
+  <meta property="og:url" content="https://yourwebsite.com">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fagun With Bugs - Master Software QA & Testing">
+  <meta name="twitter:description" content="Discover the world of manual, automation, API, performance, and security testing with Fagun With Bugs. Learn, explore, and excel in software QA.">
+  <meta name="twitter:image" content="https://yourwebsite.com/logo.png">
   <title>Fagun With Bugs - Advanced Software Testing Resources</title>
+  <link rel="canonical" href="https://yourwebsite.com">
   <link rel="stylesheet" href="styles.css"> <!-- External stylesheet -->
   <style>
     /* General Styles */
@@ -33,7 +47,7 @@
       padding: 20px 40px;
       background: linear-gradient(90deg, #004e92, #001f3f);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
+      z-index: 100;
     }
 
     .header .page-title {
@@ -117,7 +131,7 @@
 
     .header .get-started {
       background: #f8f8f6;
-      color: #ff0800;
+      color: #ff0800; /* Text matches background initially */
       text-decoration: none;
       font-size: 1rem;
       padding: 10px 25px;
@@ -128,7 +142,7 @@
 
     .header .get-started:hover {
       background: #ffcc33;
-      color: black;
+      color: black; /* Changes to black on hover */
       transform: scale(1.1);
     }
 
@@ -138,15 +152,19 @@
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
-      min-height: 70vh; /* Adjust for responsiveness */
-      padding-top: 150px; /* Offset for fixed header */
+      height: 70vh;
+      position: relative;
+      overflow: hidden;
       padding-left: 40px;
       background: linear-gradient(to bottom, #004e92, #001f3f);
       box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
     }
 
     .test-cases {
-      width: 100%;
+      position: relative;
+      width: 90%;
+      height: auto;
+      padding: 20px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
@@ -159,6 +177,8 @@
       padding: 20px;
       text-align: center;
       font-size: 1.2rem;
+      position: relative;
+      overflow: hidden;
       animation: fade-in 2s ease-in-out forwards;
       opacity: 0;
     }
@@ -179,6 +199,29 @@
       animation-delay: 2s;
     }
 
+    .icon {
+      width: 60px;
+      height: 60px;
+      background: #ffcc00;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #001f3f;
+      margin: 0 auto 10px;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
     @keyframes fade-in {
       from {
         opacity: 0;
@@ -192,7 +235,7 @@
 
     /* Links Section */
     .links-section {
-      padding: 60px 40px; /* Adjust for fixed header */
+      padding: 100px 40px 40px; /* Added padding to account for fixed header */
       text-align: left;
     }
 
@@ -221,11 +264,23 @@
       text-align: center;
       background: #001f3f;
       color: #ffcc00;
+      position: relative;
+    }
+
+    footer a {
+      color: #ffcc00;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: white;
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
+  <!-- Header Section -->
   <div class="header">
     <span class="page-title">Advanced Software Testing Resources</span>
     <div class="nav-links">
@@ -247,18 +302,34 @@
   <!-- Animation Section -->
   <div class="animation-section">
     <div class="test-cases">
-      <div class="test-case">📋 Write Test Cases</div>
-      <div class="test-case">🔍 Analyze Defects</div>
-      <div class="test-case">⚙️ Execute Automation</div>
-      <div class="test-case">🚀 Performance Testing</div>
+      <div class="test-case">
+        <div class="icon">📋</div>
+        <span>Write Test Cases</span>
+      </div>
+      <div class="test-case">
+        <div class="icon">🔍</div>
+        <span>Analyze Defects</span>
+      </div>
+      <div class="test-case">
+        <div class="icon">⚙️</div>
+        <span>Execute Automation</span>
+      </div>
+      <div class="test-case">
+        <div class="icon">🚀</div>
+        <span>Performance Testing</span>
+      </div>
     </div>
   </div>
 
   <!-- Links Section -->
-  <div class="links-section">
+  <div class="links-section" id="resources">
     <h2>Practice Demo Websites for Software Testing</h2>
-    <a href="#">➡️ Link 1</a>
-    <a href="#">➡️ Link 2</a>
+    <a href="https://lnkd.in/dtyy3fba" target="_blank">➡️ Welcome to the Internet</a>
+    <a href="https://lnkd.in/duPXCdsZ" target="_blank">➡️ OWASP Juice Shop</a>
+    <a href="https://lnkd.in/dSrezHvK" target="_blank">➡️ Tool Shop Demo</a>
+    <a href="https://lnkd.in/d3NFkzUF" target="_blank">➡️ Parabank Demo Website</a>
+    <a href="https://lnkd.in/dG6_wabN" target="_blank">➡️ LambdaTest ECommerce Playground</a>
+    <a href="https://lnkd.in/d-FAyU7w" target="_blank">➡️ Swag Labs</a>
   </div>
 
   <!-- Footer -->
