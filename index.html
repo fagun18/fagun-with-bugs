@@ -299,7 +299,7 @@
 <footer style="display: flex; justify-content: space-between; align-items: center; padding: 20px; width: 100%;">
   <!-- Visitor Counter -->
   <div class="visitor-counter" style="margin-right: auto; font-size: 14px;">
-    Total Visitors: <span id="visitorCount">0</span>
+    Total Visitors: <span id="visitorCount">Loading...</span>
   </div>
 
   <!-- Product Hunt Badge -->
@@ -317,17 +317,25 @@
 </footer>
 
 <script>
-  // Simulate visitor counter with localStorage
-  if (!localStorage.getItem('pageVisitCount')) {
-    localStorage.setItem('pageVisitCount', 1);
-  } else {
-    const currentCount = parseInt(localStorage.getItem('pageVisitCount'), 10) + 1;
-    localStorage.setItem('pageVisitCount', currentCount);
+  // Fetch visitor count from the server and update it
+  async function updateVisitorCount() {
+    try {
+      // Increment visitor count
+      await fetch('/api/visitor-count', { method: 'POST' });
+      // Fetch the updated count
+      const response = await fetch('/api/visitor-count');
+      const data = await response.json();
+      document.getElementById('visitorCount').textContent = data.count;
+    } catch (error) {
+      console.error('Error fetching visitor count:', error);
+      document.getElementById('visitorCount').textContent = 'Error';
+    }
   }
-  
-  // Display visitor count
-  document.getElementById('visitorCount').textContent = localStorage.getItem('pageVisitCount');
+
+  // Update the visitor count on page load
+  updateVisitorCount();
 </script>
+
 
 
 </body>
