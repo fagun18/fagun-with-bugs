@@ -396,38 +396,18 @@
 </style>
 
 <!-- Footer Section -->
-<footer style="display: flex; justify-content: space-between; align-items: center; padding: 20px; width: 100%;">
-  <!-- Visitor Counter -->
-  <div class="visitor-counter" style="margin-right: auto; font-size: 14px;">
-    Total Visitors: <span id="visitorCount">0</span>
-  </div>
-
-  <!-- Product Hunt Badge -->
-  <div class="product-hunt-badge" style="margin: 0 auto;">
+<footer style="display: flex; flex-direction: column; align-items: center; padding: 20px;">
+  <div class="product-hunt-badge" style="margin-bottom: 10px;">
     <a href="https://www.producthunt.com/posts/fagun-with-bugs-sqa-tools?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-fagun&#0045;with&#0045;bugs&#0045;sqa&#0045;tools" target="_blank">
       <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=804113&theme=light&t=1737476892270" alt="Fagun&#0032;With&#0032;Bugs&#0032;SQA&#0032;Tools - Fagun&#0032;with&#0032;bugs&#0032;sqa&#0032;tools&#0032;🐞 | Product Hunt" style="width: 250px; height: 54px;" />
     </a>
   </div>
-
-  <!-- Footer Links -->
-  <div class="footer-links" style="margin-left: auto; display: flex; gap: 15px;">
+  <div class="footer-links" style="display: flex; gap: 15px;">
     <a href="privacy_policy.html">Privacy Policy</a>
     <a href="terms_conditions.html">Terms & Conditions</a>
   </div>
 </footer>
 
-<script>
-  // Simulate visitor counter with localStorage
-  if (!localStorage.getItem('pageVisitCount')) {
-    localStorage.setItem('pageVisitCount', 1);
-  } else {
-    const currentCount = parseInt(localStorage.getItem('pageVisitCount'), 10) + 1;
-    localStorage.setItem('pageVisitCount', currentCount);
-  }
-  
-  // Display visitor count
-  document.getElementById('visitorCount').textContent = localStorage.getItem('pageVisitCount');
-</script>
 
 </body>
 </html>
