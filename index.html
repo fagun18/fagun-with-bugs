@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="description" content="Fagun With Bugs - A unique platform offering insights into manual, automation, API, performance, and security testing. Learn, explore, and master software QA.">
   <meta name="keywords" content="Fagun With Bugs, Software Testing, Manual Testing, Automation Testing, API Testing, Performance Testing, Security Testing, SQA, Bug Bounty">
   <meta name="author" content="Mejbaur Bahar Fagun">
@@ -26,14 +26,12 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     html, body {
       width: 100%;
       height: 100%;
       overflow: hidden;
       font-family: Arial, sans-serif;
     }
-
     /* Header Section */
     .header {
       position: absolute;
@@ -48,21 +46,17 @@
       padding: 10px 20px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
-
     .header .logo img {
       height: 40px;
     }
-
     .header .page-title {
       font-size: 1.5rem;
       font-weight: bold;
     }
-
     .header .nav-links {
       display: flex;
       align-items: center;
     }
-
     .header .nav-links a {
       color: white;
       text-decoration: none;
@@ -72,16 +66,13 @@
       border-radius: 5px;
       transition: background 0.3s, color 0.3s;
     }
-
     .header .nav-links a:hover {
       background: #ffcc00;
       color: #000428;
     }
-
     .header .dropdown {
       position: relative;
     }
-
     .header .dropdown .dropbtn {
       background: #007bff;
       color: white;
@@ -92,11 +83,9 @@
       cursor: pointer;
       transition: background 0.3s;
     }
-
     .header .dropdown .dropbtn:hover {
       background: #0056b3;
     }
-
     .header .dropdown-content {
       display: none;
       position: absolute;
@@ -109,11 +98,9 @@
       left: 0;
       z-index: 30;
     }
-
     .header .dropdown:hover .dropdown-content {
       display: block;
     }
-
     .header .dropdown-content a {
       display: block;
       padding: 10px 15px;
@@ -122,17 +109,12 @@
       font-size: 0.9rem;
       transition: background 0.3s, color 0.3s;
     }
-
     .header .dropdown-content a:hover {
       background: #f0f0f0;
       color: #007bff;
     }
-
     /* Solar System */
     .solar-system {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       position: absolute;
       top: 60px; /* Adjust for header height */
       bottom: 40px; /* Adjust for footer height */
@@ -140,7 +122,6 @@
       background: radial-gradient(circle at center, #000428, #004e92);
       overflow: hidden;
     }
-
     .bug {
       position: absolute;
       top: 50%;
@@ -151,40 +132,21 @@
       z-index: 10;
       text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff9900;
     }
-
+    /* Center the orbits and add rotation animation */
     .orbit {
       position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       border: 2px solid rgba(255, 255, 255, 0.3);
       border-radius: 50%;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     }
-
-    .orbit:nth-child(2) {
-      width: 220px;
-      height: 220px;
-      animation: spin-orbit 12s linear infinite;
-    }
-
-    .orbit:nth-child(3) {
-      width: 370px;
-      height: 370px;
-      animation: spin-orbit 18s linear infinite;
-    }
-
-    .orbit:nth-child(4) {
-      width: 520px;
-      height: 520px;
-      animation: spin-orbit 25s linear infinite;
-    }
-
-    .orbit:nth-child(5) {
-      width: 680px;
-      height: 680px;
-      animation: spin-orbit 32s linear infinite;
-    }
-
-    .planet {
+    .orbit > .planet {
       position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
       width: 70px;
       height: 70px;
       background: radial-gradient(circle, #4caf50, #006400);
@@ -195,36 +157,49 @@
       line-height: 70px;
       border-radius: 50%;
       box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
-      transform: translate(-50%, -50%);
-      top: 50%;
-      left: 0;
     }
-
-    .orbit:nth-child(2) .planet {
+    /* Specific orbit sizes and animations */
+    .orbit:nth-of-type(2) {
+      width: 220px;
+      height: 220px;
+      animation: spin-orbit 12s linear infinite;
+    }
+    .orbit:nth-of-type(3) {
+      width: 370px;
+      height: 370px;
+      animation: spin-orbit 18s linear infinite;
+    }
+    .orbit:nth-of-type(4) {
+      width: 520px;
+      height: 520px;
+      animation: spin-orbit 25s linear infinite;
+    }
+    .orbit:nth-of-type(5) {
+      width: 680px;
+      height: 680px;
+      animation: spin-orbit 32s linear infinite;
+    }
+    /* Change planet colors for each orbit */
+    .orbit:nth-of-type(2) > .planet {
       background: radial-gradient(circle, #2196f3, #001970);
     }
-
-    .orbit:nth-child(3) .planet {
+    .orbit:nth-of-type(3) > .planet {
       background: radial-gradient(circle, #ff5722, #bf360c);
     }
-
-    .orbit:nth-child(4) .planet {
+    .orbit:nth-of-type(4) > .planet {
       background: radial-gradient(circle, #beaf1f, #f57f17);
     }
-
-    .orbit:nth-child(5) .planet {
+    .orbit:nth-of-type(5) > .planet {
       background: radial-gradient(circle, #9c27b0, #4a148c);
     }
-
     @keyframes spin-orbit {
       0% {
-        transform: rotate(0deg);
+        transform: translate(-50%, -50%) rotate(0deg);
       }
       100% {
-        transform: rotate(360deg);
+        transform: translate(-50%, -50%) rotate(360deg);
       }
     }
-
     /* Footer */
     footer {
       position: absolute;
@@ -235,12 +210,66 @@
       background-color: #007bff;
       color: white;
     }
-
     footer a {
       color: white;
       text-decoration: none;
       margin: 0 10px;
       font-size: 1rem;
+    }
+    /* Responsive styles for phone and tablet screens */
+    @media (max-width: 768px) {
+      html, body {
+        overflow-y: auto;
+      }
+      .header {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .header .nav-links a,
+      .header .dropdown .dropbtn {
+        padding: 8px 10px;
+        margin: 5px;
+        font-size: 0.9rem;
+      }
+      .header .dropdown-content {
+        width: 100%;
+        left: 0;
+        text-align: center;
+      }
+      .solar-system {
+        top: 80px;
+        bottom: 80px;
+      }
+      .bug {
+        font-size: 4rem;
+      }
+      .orbit:nth-of-type(2) {
+        width: 150px;
+        height: 150px;
+      }
+      .orbit:nth-of-type(3) {
+        width: 250px;
+        height: 250px;
+      }
+      .orbit:nth-of-type(4) {
+        width: 350px;
+        height: 350px;
+      }
+      .orbit:nth-of-type(5) {
+        width: 450px;
+        height: 450px;
+      }
+      .orbit > .planet {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 0.7rem;
+      }
     }
   </style>
 </head>
@@ -260,21 +289,12 @@
         <div class="dropdown-content">
           <a href="sqa-tool.html">Testing Tools</a>
           <a href="sqa-practice-demo.html">SQA Practice</a>
-
         </div>
       </div>
       <a href="https://www.linkedin.com/newsletters/7049699805199020032/">Blogs</a>
-
-      <a
-        href="https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob"
-        target="_blank"
-        class="get-started"
-      >
-        🐞 Get Started For Free
-      </a>
+      <a href="https://chromewebstore.google.com/detail/fagun-with-bugs-sqa-testi/peelhgmemfhajlldpkamljidapnfnaob" target="_blank" class="get-started">🐞 Get Started For Free</a>
     </div>
   </div>
-
   <!-- Solar System Animation -->
   <div class="solar-system">
     <div class="bug">🐞</div>
@@ -294,27 +314,17 @@
       <div class="planet">Security</div>
     </div>
   </div>
-
-<!-- Footer Section -->
-<footer style="display: flex; flex-direction: column; align-items: center; padding: 20px;">
-  <div class="product-hunt-badge" style="margin-bottom: 10px;">
-    <a href="https://www.producthunt.com/posts/fagun-with-bugs-sqa-tools?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-fagun&#0045;with&#0045;bugs&#0045;sqa&#0045;tools" target="_blank">
-      <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=804113&theme=light&t=1737476892270" alt="Fagun&#0032;With&#0032;Bugs&#0032;SQA&#0032;Tools - Fagun&#0032;with&#0032;bugs&#0032;sqa&#0032;tools&#0032;🐞 | Product Hunt" style="width: 250px; height: 54px;" />
-    </a>
-  </div>
-  <div class="footer-links" style="display: flex; gap: 15px;">
-    <a href="privacy_policy.html">Privacy Policy</a>
-    <a href="terms_conditions.html">Terms & Conditions</a>
-  </div>
-</footer>
-ass="footer-links" style="margin-left: auto; display: flex; gap: 15px;">
-    <a href="privacy_policy.html">Privacy Policy</a>
-    <a href="terms_conditions.html">Terms & Conditions</a>
-  </div>
-</footer>
-
-
-
-
+  <!-- Footer Section -->
+  <footer style="display: flex; flex-direction: column; align-items: center; padding: 20px;">
+    <div class="product-hunt-badge" style="margin-bottom: 10px;">
+      <a href="https://www.producthunt.com/posts/fagun-with-bugs-sqa-tools?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-fagun&#0045;with&#0045;bugs&#0045;sqa&#0045;tools" target="_blank">
+        <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=804113&theme=light&t=1737476892270" alt="Fagun With Bugs SQA Tools - Fagun with bugs sqa tools 🐞 | Product Hunt" style="width: 250px; height: 54px;" />
+      </a>
+    </div>
+    <div class="footer-links" style="display: flex; gap: 15px;">
+      <a href="privacy_policy.html">Privacy Policy</a>
+      <a href="terms_conditions.html">Terms &amp; Conditions</a>
+    </div>
+  </footer>
 </body>
 </html>
