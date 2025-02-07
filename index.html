@@ -179,11 +179,18 @@
       background: radial-gradient(circle, #4caf50, #006400);
       border: 2px solid white;
       color: white;
-      font-size: 0.8rem;
-      text-align: center;
-      line-height: 70px;
+      /* Reduce font size to fit text and force breaking long words */
+      font-size: 0.7rem;
       border-radius: 50%;
       box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 5px;
+      overflow: hidden;
+      word-wrap: break-word;
+      word-break: break-all;
     }
     /* Specific orbit sizes and animations */
     .orbit:nth-of-type(2) {
@@ -259,7 +266,6 @@
         flex: 1 1 auto;
         text-align: center;
       }
-      /* Show hamburger menu and hide nav-links by default */
       .menu-toggle {
         display: flex;
       }
@@ -270,7 +276,7 @@
         flex-direction: column;
       }
       .nav-links.active {
-        max-height: 500px; /* arbitrary large value */
+        max-height: 500px;
       }
       .nav-links a,
       .dropdown .dropbtn {
@@ -309,7 +315,7 @@
       .orbit > .planet {
         width: 50px;
         height: 50px;
-        line-height: 50px;
+        padding: 0 3px;
         font-size: 0.7rem;
       }
     }
