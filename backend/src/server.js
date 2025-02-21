@@ -16,6 +16,7 @@ const app = express();
 // Determine port and environment
 const PORT = process.env.PORT || 3000;
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+const PRODUCTION_DOMAIN = 'sqatesting.com';
 
 // Configure CORS with dynamic origin handling
 const ALLOWED_ORIGINS = process.env.CORS_ORIGINS 
@@ -41,12 +42,14 @@ function logEvent(type, details) {
 // Middleware for logging and CORS
 app.use((req, res, next) => {
     const origin = req.get('origin');
+    const host = req.get('host');
     
     // Log incoming request
     logEvent('request_received', {
         method: req.method,
         path: req.path,
-        origin: origin || 'unknown'
+        origin: origin || 'unknown',
+        host: host || 'unknown'
     });
 
     // Dynamic CORS handling
@@ -68,8 +71,8 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-// GitHub OAuth Routes with Enhanced Error Handling
-app.get('/auth/github', (req, res) => {
+// Explicit route handling for production and development
+function handleGitHubAuthRoute(req, res) {
     try {
         // Validate environment configuration
         if (!process.env.GITHUB_CLIENT_ID) {
@@ -116,82 +119,10 @@ app.get('/auth/github', (req, res) => {
             details: error.message 
         });
     }
-});
+}
 
-app.post('/auth/github/callback', async (req, res) => {
-    const { code, state } = req.body;
-
-    if (!code || !state) {
-        return res.status(400).json({ 
-            error: 'Missing code or state',
-            details: 'Both authorization code and state are required' 
-        });
-    }
-
-    try {
-        // Exchange code for access token
-        const tokenResponse = await axios.post('https://github.com/login/oauth/access_token', {
-            client_id: process.env.GITHUB_CLIENT_ID,
-            client_secret: process.env.GITHUB_CLIENT_SECRET,
-            code,
-            redirect_uri: process.env.GITHUB_CALLBACK_URL,
-            state
-        }, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
-
-        const { access_token, error, error_description } = tokenResponse.data;
-
-        if (error) {
-            console.warn('GitHub Token Exchange Error:', error, error_description);
-            return res.status(401).json({ 
-                error: 'OAuth token exchange failed',
-                details: error_description 
-            });
-        }
-
-        // Fetch user information
-        const userResponse = await axios.get('https://api.github.com/user', {
-            headers: {
-                'Authorization': `token ${access_token}`,
-                'Accept': 'application/vnd.github.v3+json'
-            }
-        });
-
-        const user = userResponse.data;
-
-        // Create a secure session token
-        const token = crypto.randomBytes(32).toString('hex');
-
-        // Optional: Log successful authentication
-        console.log(`User authenticated: ${user.login} (${user.name})`);
-
-        res.json({
-            user: {
-                id: user.id,
-                login: user.login,
-                name: user.name,
-                avatar: user.avatar_url,
-                email: user.email || 'Not provided'
-            },
-            token
-        });
-
-    } catch (error) {
-        console.error('GitHub OAuth Complete Error:', {
-            message: error.message,
-            response: error.response ? error.response.data : 'No response',
-            stack: error.stack
-        });
-
-        res.status(500).json({ 
-            error: 'Authentication failed', 
-            details: error.response ? error.response.data : error.message 
-        });
-    }
-});
+// Add routes for both production and development domains
+app.get('/auth/github', handleGitHubAuthRoute);
 
 // Root route for health check
 app.get('/', (req, res) => {

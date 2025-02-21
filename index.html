@@ -469,6 +469,7 @@
         // Backend OAuth Server Configuration
         const BACKEND_SERVERS = [
             'https://sqatesting.com/auth/github',
+            'https://localhost:3000/auth/github',
             'http://localhost:3000/auth/github'
         ];
 
@@ -503,8 +504,16 @@
 
                     logOAuthEvent('attempting_fetch', { url });
 
+                    // Add custom headers for better server identification
+                    const headers = {
+                        ...options.headers,
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-OAuth-Request': 'GitHub'
+                    };
+
                     const response = await fetch(url, {
                         ...options,
+                        headers,
                         signal: controller.signal
                     });
 
@@ -545,8 +554,7 @@
                 const result = await fetchWithFallback(BACKEND_SERVERS, {
                     method: 'GET',
                     headers: {
-                        'Accept': 'application/json',
-                        'X-Requested-With': 'XMLHttpRequest'
+                        'Accept': 'application/json'
                     }
                 });
 
