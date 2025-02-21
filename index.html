@@ -467,25 +467,53 @@
 <body>
     <script>
         // Backend OAuth Server Configuration
-        const BACKEND_AUTH_URL = 'https://sqatesting.com/auth/github';
-        const BACKEND_CALLBACK_URL = 'https://sqatesting.com/auth/github/callback';
+        const BACKEND_SERVERS = [
+            'https://sqatesting.com/auth/github',
+            'http://localhost:3000/auth/github'
+        ];
+
+        async function fetchWithFallback(urls, options = {}, timeout = 5000) {
+            for (const url of urls) {
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+                    const response = await fetch(url, {
+                        ...options,
+                        signal: controller.signal
+                    });
+
+                    clearTimeout(timeoutId);
+
+                    if (!response.ok) {
+                        console.warn(`Server ${url} returned non-200 status`);
+                        continue;
+                    }
+
+                    return await response.json();
+                } catch (error) {
+                    console.warn(`Failed to fetch from ${url}:`, error.message);
+                    continue;
+                }
+            }
+
+            throw new Error('All backend servers are unreachable');
+        }
 
         async function loginWithGitHub() {
             try {
-                const response = await fetch(BACKEND_AUTH_URL);
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error || 'Failed to get GitHub authorization URL');
-                }
-
-                const { authorizationUrl, state } = await response.json();
+                const result = await fetchWithFallback(BACKEND_SERVERS, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
 
                 // Store state for CSRF protection
-                localStorage.setItem('github_oauth_state', state);
+                localStorage.setItem('github_oauth_state', result.state);
 
                 // Redirect to GitHub authorization
-                window.location.href = authorizationUrl;
+                window.location.href = result.authorizationUrl;
 
             } catch (error) {
                 console.error('GitHub Login Initialization Error:', error);
@@ -494,31 +522,13 @@
                     errorMessage: error.message
                 });
 
-                alert(`Login Failed: ${error.message}\n\nTroubleshooting Tips:\n- Check your internet connection\n- Verify server status\n- Try again later`);
+                alert(`Login Failed: Unable to connect to authentication servers.\n\nTroubleshooting Tips:\n- Check your internet connection\n- Verify server status\n- Try again later\n\nDetailed Error: ${error.message}`);
             }
-        }
-
-        function handleGitHubCallback() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const code = urlParams.get('code');
-            const returnedState = urlParams.get('state');
-            const storedState = localStorage.getItem('github_oauth_state');
-
-            if (!code || !returnedState || returnedState !== storedState) {
-                alert('Invalid OAuth state. Please try logging in again.');
-                return;
-            }
-
-            // Clear stored state
-            localStorage.removeItem('github_oauth_state');
-
-            // Exchange code with backend
-            exchangeCodeForToken(code, returnedState);
         }
 
         async function exchangeCodeForToken(code, state) {
             try {
-                const response = await fetch(BACKEND_CALLBACK_URL, {
+                const response = await fetch(BACKEND_SERVERS[0], {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -548,7 +558,7 @@
                 window.location.href = '/'; // Redirect to home page
 
             } catch (error) {
-                console.error('🚨 GitHub OAuth Error:', error);
+                console.error('GitHub OAuth Error:', error);
                 
                 // Detailed error logging
                 logOAuthEvent('Authentication Failed', {
@@ -599,11 +609,19 @@
         function handleGitHubCallback() {
             const urlParams = new URLSearchParams(window.location.search);
             const code = urlParams.get('code');
-            const state = urlParams.get('state');
+            const returnedState = urlParams.get('state');
+            const storedState = localStorage.getItem('github_oauth_state');
 
-            if (code && state) {
-                handleGitHubCallback();
+            if (!code || !returnedState || returnedState !== storedState) {
+                alert('Invalid OAuth state. Please try logging in again.');
+                return;
             }
+
+            // Clear stored state
+            localStorage.removeItem('github_oauth_state');
+
+            // Exchange code with backend
+            exchangeCodeForToken(code, returnedState);
         }
 
         // Initialize on page load
@@ -664,7 +682,7 @@
     <main>
         <section id="home" class="advanced-hero">
             <div class="hero-content">
-                <h1 class="hero-title">Bug Matrix 🐞 SQA Testing Toolkit</h1>
+                <h1 class="hero-title">Bug Matrix SQA Testing Toolkit</h1>
                 <p class="hero-subtitle">
                     A browser extension for testers to organize and access tools for manual testing, automation, API testing, and security analysis.
                 </p>
