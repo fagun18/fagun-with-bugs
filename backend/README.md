@@ -1,43 +1,91 @@
 # Secure GitHub OAuth Backend
 
+## Overview
+A secure, production-ready GitHub OAuth backend service built with Node.js and Express.
+
 ## Prerequisites
 - Node.js (v16+)
-- npm
+- npm or yarn
+- GitHub OAuth App credentials
 
-## Setup
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+## Installation
 
-3. Create a `.env` file with the following:
-   ```
-   GITHUB_CLIENT_ID=your_github_client_id
-   GITHUB_CLIENT_SECRET=your_github_client_secret
-   GITHUB_CALLBACK_URL=http://localhost:5500/auth/callback
-   FRONTEND_URL=http://localhost:5500
-   JWT_SECRET=your_super_secret_key
-   ```
+### 1. Clone Repository
+```bash
+git clone https://github.com/your-username/sqatesting-oauth-backend.git
+cd sqatesting-oauth-backend
+```
+
+### 2. Install Dependencies
+```bash
+npm install
+# or
+yarn install
+```
+
+### 3. Configure Environment
+Create a `.env` file in the project root:
+```
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+GITHUB_CALLBACK_URL=http://localhost:5500/auth/callback
+FRONTEND_URL=http://localhost:5500
+JWT_SECRET=your_super_secret_key
+```
+
+## GitHub OAuth App Setup
+1. Go to [GitHub Developer Settings](https://github.com/settings/developers)
+2. Create a new OAuth App
+3. Set Homepage URL to your frontend URL
+4. Set Authorization callback URL to match `GITHUB_CALLBACK_URL`
 
 ## Running the Server
-- Development: `npm run dev`
-- Production: `npm start`
 
-## Security Notes
-- Never expose `.env` file
-- Rotate secrets regularly
-- Use HTTPS in production
+### Development Mode
+```bash
+npm run dev
+# Uses nodemon for auto-reloading
+```
 
-## OAuth Flow
-1. Frontend requests authorization URL
-2. Backend generates secure state
-3. User redirects to GitHub
-4. GitHub redirects back to callback
-5. Backend exchanges code for token
-6. Backend returns user info and token
+### Production Mode
+```bash
+npm start
+```
+
+## Security Features
+- CORS protection
+- State-based CSRF prevention
+- Secure token generation
+- Environment-based configuration
+- Comprehensive error handling
+
+## Endpoints
+
+### GET `/auth/github`
+- Generates GitHub authorization URL
+- Returns `authorizationUrl` and `state`
+
+### POST `/auth/github/callback`
+- Exchanges GitHub code for access token
+- Retrieves user information
+- Returns user profile and session token
+
+### GET `/health`
+- Server health check endpoint
 
 ## Troubleshooting
-- Ensure GitHub OAuth App settings match callback URL
+- Verify GitHub OAuth App settings
 - Check network connectivity
-- Verify environment variables
+- Ensure environment variables are correctly set
+
+## Best Practices
+- Never commit `.env` file
+- Rotate secrets regularly
+- Use HTTPS in production
+- Implement additional authentication layers
+
+## License
+MIT License
+
+## Contributing
+Contributions are welcome! Please read our contributing guidelines.
