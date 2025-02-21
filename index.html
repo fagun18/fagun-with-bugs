@@ -467,17 +467,18 @@
 <body>
     <script>
         // Backend OAuth Server Configuration
-        const BACKEND_AUTH_URL = 'http://localhost:3000/auth/github';
-        const BACKEND_CALLBACK_URL = 'http://localhost:3000/auth/github/callback';
-
-        // Remove sensitive client-side configurations
-        // const GITHUB_CLIENT_ID = '...';
-        // const GITHUB_CLIENT_SECRET = '...';
+        const BACKEND_AUTH_URL = 'https://sqatesting.com/auth/github';
+        const BACKEND_CALLBACK_URL = 'https://sqatesting.com/auth/github/callback';
 
         async function loginWithGitHub() {
             try {
-                // Request authorization URL from backend
                 const response = await fetch(BACKEND_AUTH_URL);
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Failed to get GitHub authorization URL');
+                }
+
                 const { authorizationUrl, state } = await response.json();
 
                 // Store state for CSRF protection
@@ -485,9 +486,15 @@
 
                 // Redirect to GitHub authorization
                 window.location.href = authorizationUrl;
+
             } catch (error) {
                 console.error('GitHub Login Initialization Error:', error);
-                alert('Failed to start GitHub login. Please try again.');
+                
+                logOAuthEvent('Login Initialization Failed', {
+                    errorMessage: error.message
+                });
+
+                alert(`Login Failed: ${error.message}\n\nTroubleshooting Tips:\n- Check your internet connection\n- Verify server status\n- Try again later`);
             }
         }
 

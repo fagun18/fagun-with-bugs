@@ -3,26 +3,59 @@ import cors from 'cors';
 import axios from 'axios';
 import dotenv from 'dotenv';
 import crypto from 'crypto';
+import http from 'http';
+import https from 'https';
 
 // Load environment variables
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-// Middleware
+// Determine port
+const PORT = process.env.PORT || 3000;
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+
+// Configure CORS with dynamic origin handling
+const ALLOWED_ORIGINS = [
+    'https://sqatesting.com',
+    'http://localhost:5500',
+    'http://127.0.0.1:5500'
+];
+
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true,
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    origin: function(origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        
+        if (ALLOWED_ORIGINS.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
 }));
+
 app.use(express.json());
 
-// Logging middleware
+// Logging middleware with improved error tracking
 app.use((req, res, next) => {
-    const timestamp = new Date().toISOString();
-    console.log(`[${timestamp}] ${req.method} ${req.path}`);
+    const start = Date.now();
+    
+    // Capture the original end function
+    const originalEnd = res.end;
+    
+    // Override the end function to log response details
+    res.end = function(chunk, encoding) {
+        const duration = Date.now() - start;
+        console.log(`[${new Date().toISOString()}] ${req.method} ${req.path} - ${res.statusCode} (${duration}ms)`);
+        
+        // Call the original end function
+        originalEnd.call(this, chunk, encoding);
+    };
+    
     next();
 });
 
@@ -130,7 +163,8 @@ app.post('/auth/github/callback', async (req, res) => {
 app.get('/health', (req, res) => {
     res.json({ 
         status: 'healthy', 
-        timestamp: new Date().toISOString() 
+        timestamp: new Date().toISOString(),
+        environment: process.env.NODE_ENV || 'development'
     });
 });
 
@@ -151,17 +185,30 @@ app.use((err, req, res, next) => {
     });
 });
 
+// Create HTTP/HTTPS server based on environment
+let server;
+if (IS_PRODUCTION) {
+    // In production, you would use HTTPS with real SSL certificates
+    server = https.createServer({
+        // Add your SSL certificate and key here
+        // key: fs.readFileSync('/path/to/private.key'),
+        // cert: fs.readFileSync('/path/to/certificate.crt')
+    }, app);
+} else {
+    server = http.createServer(app);
+}
+
 // Start server
-const server = app.listen(PORT, () => {
-    console.log(`🚀 OAuth Server running on http://localhost:${PORT}`);
+server.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚀 OAuth Server running on ${IS_PRODUCTION ? 'https' : 'http'}://0.0.0.0:${PORT}`);
     console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });
 
 // Graceful shutdown
 process.on('SIGTERM', () => {
-    console.log('SIGTERM signal received. Closing HTTP server.');
+    console.log('SIGTERM signal received. Closing server.');
     server.close(() => {
-        console.log('HTTP server closed.');
+        console.log('Server closed.');
         process.exit(0);
     });
 });
