@@ -472,11 +472,36 @@
             'http://localhost:3000/auth/github'
         ];
 
+        // Enhanced logging function
+        function logOAuthEvent(eventType, details = {}) {
+            const logEntry = {
+                timestamp: new Date().toISOString(),
+                eventType,
+                ...details
+            };
+            console.log(JSON.stringify(logEntry));
+            
+            // Optional: Send log to backend or analytics service
+            try {
+                fetch('/log-oauth-event', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(logEntry)
+                }).catch(console.warn);
+            } catch (error) {
+                console.warn('Failed to send OAuth log', error);
+            }
+        }
+
         async function fetchWithFallback(urls, options = {}, timeout = 5000) {
             for (const url of urls) {
                 try {
                     const controller = new AbortController();
                     const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+                    logOAuthEvent('attempting_fetch', { url });
 
                     const response = await fetch(url, {
                         ...options,
@@ -486,13 +511,28 @@
                     clearTimeout(timeoutId);
 
                     if (!response.ok) {
-                        console.warn(`Server ${url} returned non-200 status`);
+                        logOAuthEvent('fetch_error', {
+                            url,
+                            status: response.status,
+                            statusText: response.statusText
+                        });
                         continue;
                     }
 
-                    return await response.json();
+                    const result = await response.json();
+                    
+                    logOAuthEvent('fetch_success', { 
+                        url, 
+                        hasAuthorizationUrl: !!result.authorizationUrl 
+                    });
+
+                    return result;
                 } catch (error) {
-                    console.warn(`Failed to fetch from ${url}:`, error.message);
+                    logOAuthEvent('fetch_exception', {
+                        url,
+                        errorMessage: error.message,
+                        errorName: error.name
+                    });
                     continue;
                 }
             }
@@ -505,12 +545,22 @@
                 const result = await fetchWithFallback(BACKEND_SERVERS, {
                     method: 'GET',
                     headers: {
-                        'Accept': 'application/json'
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
                     }
                 });
 
+                // Validate result
+                if (!result.authorizationUrl || !result.state) {
+                    throw new Error('Invalid server response');
+                }
+
                 // Store state for CSRF protection
                 localStorage.setItem('github_oauth_state', result.state);
+
+                logOAuthEvent('authorization_url_received', {
+                    stateLength: result.state.length
+                });
 
                 // Redirect to GitHub authorization
                 window.location.href = result.authorizationUrl;
@@ -518,8 +568,9 @@
             } catch (error) {
                 console.error('GitHub Login Initialization Error:', error);
                 
-                logOAuthEvent('Login Initialization Failed', {
-                    errorMessage: error.message
+                logOAuthEvent('login_initialization_failed', {
+                    errorMessage: error.message,
+                    servers: BACKEND_SERVERS
                 });
 
                 alert(`Login Failed: Unable to connect to authentication servers.\n\nTroubleshooting Tips:\n- Check your internet connection\n- Verify server status\n- Try again later\n\nDetailed Error: ${error.message}`);

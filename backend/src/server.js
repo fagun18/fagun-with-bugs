@@ -5,28 +5,50 @@ import dotenv from 'dotenv';
 import crypto from 'crypto';
 import http from 'http';
 import https from 'https';
+import fs from 'fs';
+import path from 'path';
 
 // Load environment variables
 dotenv.config();
 
 const app = express();
 
-// Determine port
+// Determine port and environment
 const PORT = process.env.PORT || 3000;
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 // Configure CORS with dynamic origin handling
-const ALLOWED_ORIGINS = [
-    'https://sqatesting.com',
-    'http://localhost:5500',
-    'http://127.0.0.1:5500',
-    'http://localhost:3000',
-    'http://127.0.0.1:3000'
-];
+const ALLOWED_ORIGINS = process.env.CORS_ORIGINS 
+    ? process.env.CORS_ORIGINS.split(',') 
+    : [
+        'https://sqatesting.com', 
+        'http://localhost:5500', 
+        'http://127.0.0.1:5500',
+        'http://localhost:3000',
+        'http://127.0.0.1:3000'
+    ];
 
+// Enhanced logging function
+function logEvent(type, details) {
+    const logEntry = {
+        timestamp: new Date().toISOString(),
+        type,
+        ...details
+    };
+    console.log(JSON.stringify(logEntry));
+}
+
+// Middleware for logging and CORS
 app.use((req, res, next) => {
-    const origin = req.header('origin');
+    const origin = req.get('origin');
     
+    // Log incoming request
+    logEvent('request_received', {
+        method: req.method,
+        path: req.path,
+        origin: origin || 'unknown'
+    });
+
     // Dynamic CORS handling
     if (origin && ALLOWED_ORIGINS.includes(origin)) {
         res.setHeader('Access-Control-Allow-Origin', origin);
@@ -46,28 +68,21 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-// Logging middleware with improved error tracking
-app.use((req, res, next) => {
-    const start = Date.now();
-    
-    // Capture the original end function
-    const originalEnd = res.end;
-    
-    // Override the end function to log response details
-    res.end = function(chunk, encoding) {
-        const duration = Date.now() - start;
-        console.log(`[${new Date().toISOString()}] ${req.method} ${req.path} - ${res.statusCode} (${duration}ms)`);
-        
-        // Call the original end function
-        originalEnd.call(this, chunk, encoding);
-    };
-    
-    next();
-});
-
-// GitHub OAuth Routes
+// GitHub OAuth Routes with Enhanced Error Handling
 app.get('/auth/github', (req, res) => {
     try {
+        // Validate environment configuration
+        if (!process.env.GITHUB_CLIENT_ID) {
+            logEvent('oauth_error', {
+                message: 'GitHub Client ID is not configured',
+                severity: 'critical'
+            });
+            return res.status(500).json({ 
+                error: 'OAuth configuration is incomplete',
+                details: 'GitHub Client ID is missing' 
+            });
+        }
+
         // Generate a secure state to prevent CSRF
         const state = crypto.randomBytes(16).toString('hex');
         
@@ -77,12 +92,25 @@ app.get('/auth/github', (req, res) => {
         githubAuthUrl.searchParams.set('scope', 'user:email');
         githubAuthUrl.searchParams.set('state', state);
 
-        res.json({ 
+        // Log successful authorization URL generation
+        logEvent('oauth_authorization_url_generated', {
+            state: state,
+            redirectUri: process.env.GITHUB_CALLBACK_URL
+        });
+
+        res.status(200).json({ 
             authorizationUrl: githubAuthUrl.toString(),
             state 
         });
     } catch (error) {
-        console.error('GitHub Authorization URL Generation Error:', error);
+        // Comprehensive error logging
+        logEvent('oauth_error', {
+            message: 'Failed to generate GitHub authorization URL',
+            error: error.message,
+            stack: error.stack,
+            severity: 'high'
+        });
+
         res.status(500).json({ 
             error: 'Failed to generate authorization URL',
             details: error.message 
@@ -165,6 +193,15 @@ app.post('/auth/github/callback', async (req, res) => {
     }
 });
 
+// Root route for health check
+app.get('/', (req, res) => {
+    res.status(200).json({
+        status: 'healthy',
+        environment: process.env.NODE_ENV,
+        timestamp: new Date().toISOString()
+    });
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
     res.json({ 
@@ -182,32 +219,52 @@ app.use((req, res) => {
     });
 });
 
-// Error handler
+// Error handling middleware
 app.use((err, req, res, next) => {
-    console.error('Unhandled Error:', err);
-    res.status(500).json({ 
-        error: 'Internal Server Error', 
-        details: err.message 
+    logEvent('server_error', {
+        message: err.message,
+        stack: err.stack,
+        path: req.path,
+        method: req.method
+    });
+
+    res.status(500).json({
+        error: 'Internal Server Error',
+        message: err.message
     });
 });
 
-// Create HTTP/HTTPS server based on environment
-let server;
-if (IS_PRODUCTION) {
-    // In production, you would use HTTPS with real SSL certificates
-    server = https.createServer({
-        // Add your SSL certificate and key here
-        // key: fs.readFileSync('/path/to/private.key'),
-        // cert: fs.readFileSync('/path/to/certificate.crt')
-    }, app);
-} else {
-    server = http.createServer(app);
+// Server creation with flexible configuration
+function createServer() {
+    if (IS_PRODUCTION) {
+        // In production, use HTTPS if certificates are available
+        const sslOptions = {
+            key: fs.existsSync(path.resolve('./ssl/privkey.pem')) 
+                ? fs.readFileSync(path.resolve('./ssl/privkey.pem')) 
+                : null,
+            cert: fs.existsSync(path.resolve('./ssl/fullchain.pem')) 
+                ? fs.readFileSync(path.resolve('./ssl/fullchain.pem')) 
+                : null
+        };
+
+        return sslOptions.key && sslOptions.cert 
+            ? https.createServer(sslOptions, app)
+            : http.createServer(app);
+    }
+    
+    // Development: always use HTTP
+    return http.createServer(app);
 }
 
 // Start server
-server.listen(PORT, '0.0.0.0', () => {
-    console.log(`🚀 OAuth Server running on ${IS_PRODUCTION ? 'https' : 'http'}://0.0.0.0:${PORT}`);
-    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+const server = createServer();
+server.listen(PORT, () => {
+    logEvent('server_start', {
+        port: PORT,
+        environment: process.env.NODE_ENV,
+        timestamp: new Date().toISOString()
+    });
+    console.log(`Server running on port ${PORT} in ${process.env.NODE_ENV} mode`);
 });
 
 // Graceful shutdown
