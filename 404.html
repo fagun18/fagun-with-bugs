@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+    <script>
+        // Redirect logic for GitHub Pages single page application routing
+        (function() {
+            var redirect = sessionStorage.redirect;
+            delete sessionStorage.redirect;
+            if (redirect && redirect !== location.href) {
+                history.replaceState(null, null, redirect);
+                location.replace(redirect);
+            }
+        })();
+
+        // Handle OAuth callback
+        function handleOAuthCallback() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            const state = urlParams.get('state');
+
+            if (code && state) {
+                // Store redirect parameters in sessionStorage
+                sessionStorage.redirect = `https://sqatesting.com/auth/callback?code=${encodeURIComponent(code)}&state=${encodeURIComponent(state)}`;
+                
+                // Redirect to index to trigger the redirect script
+                window.location.href = 'https://sqatesting.com/';
+            }
+        }
+
+        // Run on page load
+        window.addEventListener('load', handleOAuthCallback);
+    </script>
+</head>
+<body>
+    <h1>Redirecting...</h1>
+    <p>If you are not redirected, please enable JavaScript.</p>
+</body>
+</html>
