@@ -122,7 +122,7 @@ function handleGitHubAuthRoute(req, res) {
 }
 
 // Add routes for both production and development domains
-app.get('/auth/github', handleGitHubAuthRoute);
+app.get('/auth/callback', handleGitHubAuthRoute);
 
 // Root route for health check
 app.get('/', (req, res) => {
