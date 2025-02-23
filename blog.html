@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Bug Matrix 🐞 – SQA Testing Tools Hub</title>
+    <meta name="description" content="Explore the latest blogs on SQA, QA tools, testing tools, and software testing. Stay updated with Bug Matrix's expert insights and tutorials.">
+    <meta name="keywords" content="SQA blog, QA tools blog, testing tools blog, software testing blog, Bug Matrix blog">
+    <meta name="author" content="Bug Matrix">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Blog - Bug Matrix 🐞 – SQA Testing Tools Hub">
+    <meta property="og:description" content="Explore the latest blogs on SQA, QA tools, testing tools, and software testing. Stay updated with Bug Matrix's expert insights and tutorials.">
+    <meta property="og:image" content="https://sqatesting.com/images/blog-og.jpg">
+    <meta property="og:url" content="https://sqatesting.com/blog.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog - Bug Matrix 🐞 – SQA Testing Tools Hub">
+    <meta name="twitter:description" content="Explore the latest blogs on SQA, QA tools, testing tools, and software testing. Stay updated with Bug Matrix's expert insights and tutorials.">
+    <meta name="twitter:image" content="https://sqatesting.com/images/blog-og.jpg">
+    <link rel="canonical" href="https://sqatesting.com/blog.html">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Advanced Hacking UI */
+        :root {
+            --primary-bg: #0a0a1a;
+            --primary-text: #00ff41; /* Neon Green */
+            --accent-green: #00ff41;
+            --accent-purple: #8a2be2;
+            --accent-pink: #ff1493;
+            --accent-blue: #1e90ff;
+            --glass-bg: rgba(10, 10, 26, 0.5);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --neon-glow: 0 0 10px var(--accent-green), 0 0 20px var(--accent-green), 0 0 40px var(--accent-green);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scrollbar-width: thin;
+        }
+
+        body, html {
+            font-family: 'Roboto Mono', monospace;
+            background-color: var(--primary-bg);
+            color: var(--primary-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            perspective: 1000px;
+        }
+
+        /* Fixed Header */
+        .advanced-header {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-bottom: 2px solid var(--glass-border);
+            box-shadow: var(--neon-glow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .advanced-nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        /* Logo Fix */
+        .advanced-logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--accent-green); /* Neon Green Text */
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: transform 0.3s ease;
+            text-shadow: var(--neon-glow); /* Add Neon Glow */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .advanced-logo:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        /* Hamburger Menu */
+        .hamburger-menu {
+            display: none; /* Hidden by default */
+            font-size: 24px;
+            color: var(--accent-green);
+            cursor: pointer;
+        }
+
+        .advanced-menu {
+            display: flex;
+            gap: 25px;
+        }
+
+        .advanced-menu-item {
+            color: var(--primary-text);
+            text-decoration: none;
+            position: relative;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .advanced-menu-item::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-2);
+            transition: width 0.3s ease;
+        }
+
+        .advanced-menu-item:hover {
+            color: var(--accent-green);
+            transform: translateY(-3px);
+        }
+
+        .advanced-menu-item:hover::before {
+            width: 100%;
+        }
+
+        /* Blog Section */
+        .blog-section {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .blog-title {
+            font-size: 36px;
+            color: var(--accent-green);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: var(--neon-glow);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .blog-card {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--accent-green);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--neon-glow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px var(--accent-green), 0 0 40px var(--accent-green);
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .blog-card h2 {
+            color: var(--accent-green);
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .blog-card p {
+            color: var(--primary-text);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .blog-card a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .blog-card a:hover {
+            color: var(--accent-green);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .advanced-nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .advanced-menu {
+                display: none; /* Hide menu by default on mobile */
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                margin-top: 20px;
+            }
+
+            .advanced-menu.active {
+                display: flex; /* Show menu when active */
+            }
+
+            .hamburger-menu {
+                display: block; /* Show hamburger icon */
+            }
+
+            .blog-title {
+                font-size: 28px;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="advanced-header">
+        <nav class="advanced-nav">
+            <a href="index.html" class="advanced-logo">SQA Testing</a>
+            <div class="hamburger-menu" onclick="toggleMenu()">&#9776;</div>
+            <div class="advanced-menu" id="menu">
+                <a href="index.html" class="advanced-menu-item">Home</a>
+                <a href="blog.html" class="advanced-menu-item">Blog</a>
+                <a href="#mission" class="advanced-menu-item">Mission</a>
+                <a href="#users" class="advanced-menu-item">Users</a>
+                <a href="#installation" class="advanced-menu-item">Installation</a>
+                <a href="#legal" class="advanced-menu-item">Legal</a>
+                <a href="#contact" class="advanced-menu-item">Contact</a>
+                <a href="blog.html" class="advanced-menu-item">Blogs</a>
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <h1 class="blog-title">Blogs</h1>
+        <div class="blog-grid">
+            <!-- Blog Post 1 -->
+            <div class="blog-card">
+                <img src="Top 10 SQA Tools for 2025 by sqa testing.png" alt="Top 10 SQA Tools for 2024" onerror="this.src='https://via.placeholder.com/400x200.png?text=Default+Image';">
+                <h2>Top 10 SQA Tools for 2025</h2>
+                <p>Discover the top 10 SQA tools that every software tester should know about in 2024. From automation to security testing, we've got you covered.</p>
+                <a href="Top-10-SQA-Tools-for-2025.html">Read More →</a>
+            </div>
+                        <!-- Blog Post 2 -->
+                        <div class="blog-card">
+                            <img src="bug-matrix-sqa-testing-tools.png" alt="Top 10 SQA Tools for 2024" onerror="this.src='https://via.placeholder.com/400x200.png?text=Default+Image';">
+                            <h2>🌟 One Extension, Endless Possibilities!</h2>
+                            <p>Tired of juggling multiple tools across different platforms?</p>
+                            <a href="bug-matrix-sqa-testing-tools.html">Read More →</a>
+                        </div>
+    </section>
+
+    <script>
+        // Toggle Menu for Mobile
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
