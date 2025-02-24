@@ -25,10 +25,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6799399606811666"
-         crossorigin="anonymous"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6799399606811666"
-         crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5648495168981727" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5648495168981727" crossorigin="anonymous"></script>
     <style>
         /* Advanced Hacking UI */
         :root {
@@ -109,18 +107,26 @@
         .advanced-menu {
             display: flex;
             gap: 25px;
+            align-items: center; /* Align items vertically */
         }
 
-        .advanced-menu-item {
+        /* Ensure all menu items and dropdown buttons have the same alignment */
+        .advanced-menu-item, .dropdown-button {
             color: var(--primary-text);
             text-decoration: none;
             position: relative;
             font-weight: 500;
             letter-spacing: 1px;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            padding: 10px 20px; /* Consistent padding */
+            margin: 0; /* Consistent margin */
+            display: inline-block; /* Ensure inline display */
+            background: none;
+            border: none;
+            cursor: pointer;
         }
 
-        .advanced-menu-item::before {
+        .advanced-menu-item::before, .dropdown-button::before {
             content: '';
             position: absolute;
             bottom: -5px;
@@ -131,13 +137,49 @@
             transition: width 0.3s ease;
         }
 
-        .advanced-menu-item:hover {
+        .advanced-menu-item:hover, .dropdown-button:hover {
             color: var(--accent-green);
             transform: translateY(-3px);
         }
 
-        .advanced-menu-item:hover::before {
+        .advanced-menu-item:hover::before, .dropdown-button:hover::before {
             width: 100%;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--glass-bg);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            top: 100%; /* Position dropdown below the button */
+            left: 0;
+        }
+
+        .dropdown-content a {
+            color: var(--primary-text);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--glass-bg);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropdown-button {
+            background-color: var(--glass-bg);
         }
 
         /* Blog Section */
@@ -248,14 +290,18 @@
             <div class="hamburger-menu" onclick="toggleMenu()">&#9776;</div>
             <div class="advanced-menu" id="menu">
                 <a href="index.html" class="advanced-menu-item">Home</a>
-                <a href="blog.html" class="advanced-menu-item">Blog</a>
+                <div class="dropdown">
+                    <button class="advanced-menu-item dropdown-button" onclick="toggleDropdown()">Product</button>
+                    <div class="dropdown-content" id="dropdown">
+                        <a href="bug-matrix.html" class="dropdown-item">Bug Matrix</a>
+                    </div>
+                </div>
                 <a href="#mission" class="advanced-menu-item">Mission</a>
                 <a href="#users" class="advanced-menu-item">Users</a>
                 <a href="#installation" class="advanced-menu-item">Installation</a>
                 <a href="#legal" class="advanced-menu-item">Legal</a>
                 <a href="#contact" class="advanced-menu-item">Contact</a>
                 <a href="blog.html" class="advanced-menu-item">Blogs</a>
-
             </div>
         </nav>
     </header>
@@ -271,13 +317,21 @@
                 <p>Discover the top 10 SQA tools that every software tester should know about in 2024. From automation to security testing, we've got you covered.</p>
                 <a href="Top-10-SQA-Tools-for-2025.html">Read More →</a>
             </div>
-                        <!-- Blog Post 2 -->
-                        <div class="blog-card">
-                            <img src="bug-matrix-sqa-testing-tools.png" alt="Top 10 SQA Tools for 2024" onerror="this.src='https://via.placeholder.com/400x200.png?text=Default+Image';">
-                            <h2>🌟 One Extension, Endless Possibilities!</h2>
-                            <p>Tired of juggling multiple tools across different platforms?</p>
-                            <a href="bug-matrix-sqa-testing-tools.html">Read More →</a>
-                        </div>
+            <!-- Blog Post 2 -->
+            <div class="blog-card">
+                <img src="bug-matrix-sqa-testing-tools.png" alt="Bug Matrix SQA Testing Tools" onerror="this.src='https://via.placeholder.com/400x200.png?text=Default+Image';">
+                <h2>🌟 One Extension, Endless Possibilities!</h2>
+                <p>Tired of juggling multiple tools across different platforms?</p>
+                <a href="bug-matrix-sqa-testing-tools.html">Read More →</a>
+            </div>
+            <!-- Blog Post 3 -->
+            <div class="blog-card">
+                <img src="image/API_Testing.png" alt="API Testing" onerror="this.src='https://via.placeholder.com/400x200.png?text=Default+Image';">
+                <h2>Mastering API Testing: A Comprehensive Guide</h2>
+                <p>API testing is a critical aspect of software quality assurance (SQA) that ensures the functionality, reliability, and security of APIs.</p>
+                <a href="api-testing.html">Read More →</a>
+            </div>
+        </div>
     </section>
 
     <script>
@@ -285,6 +339,12 @@
         function toggleMenu() {
             const menu = document.getElementById('menu');
             menu.classList.toggle('active');
+        }
+
+        // Toggle Dropdown for Product Button
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdown');
+            dropdown.classList.toggle('show');
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

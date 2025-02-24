@@ -51,9 +51,9 @@
         }
     }
     </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6799399606811666"
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5648495168981727"
          crossorigin="anonymous"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6799399606811666"
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5648495168981727"
          crossorigin="anonymous"></script>
     <style>
         /* Advanced Hacking UI */
@@ -371,6 +371,106 @@
                 padding: 60px 20px;
             }
         }
+        /* Ensure all menu items and dropdown buttons have the same alignment */
+.advanced-menu-item, .dropdown-button {
+    color: var(--primary-text);
+    text-decoration: none;
+    position: relative;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    padding: 10px 20px; /* Consistent padding */
+    margin: 0; /* Consistent margin */
+    display: inline-block; /* Ensure inline display */
+}
+
+.advanced-menu-item::before, .dropdown-button::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-2);
+    transition: width 0.3s ease;
+}
+
+.advanced-menu-item:hover, .dropdown-button:hover {
+    color: var(--accent-green);
+    transform: translateY(-3px);
+}
+
+.advanced-menu-item:hover::before, .dropdown-button:hover::before {
+    width: 100%;
+}
+
+/* Ensure dropdown content is aligned properly */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--glass-bg);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 100%; /* Position dropdown below the button */
+    left: 0;
+}
+
+.dropdown-content a {
+    color: var(--primary-text);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--glass-bg);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropdown-button {
+    background-color: var(--glass-bg);
+}
+        
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-button {
+            background-color: transparent;
+            color: var(--primary-text);
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--glass-bg);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: var(--primary-text);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {background-color: var(--glass-bg)}
+
+        .dropdown:hover .dropdown-content {display: block}
+
+        .dropdown:hover .dropdown-button {background-color: var(--glass-bg)}
     </style>
 </head>
 <body>
@@ -381,16 +481,22 @@
             <div class="hamburger-menu" onclick="toggleMenu()">&#9776;</div>
             <div class="advanced-menu" id="menu">
                 <a href="index.html" class="advanced-menu-item">Home</a>
+                <div class="dropdown">
+                    <button class="advanced-menu-item dropdown-button" onclick="toggleDropdown()">Product</button>
+                    <div class="dropdown-content" id="dropdown">
+                        <a href="bug-matrix.html" class="dropdown-item">Bug Matrix</a>
+                    </div>
+                </div>
                 <a href="#mission" class="advanced-menu-item">Mission</a>
                 <a href="#users" class="advanced-menu-item">Users</a>
                 <a href="#installation" class="advanced-menu-item">Installation</a>
                 <a href="#legal" class="advanced-menu-item">Legal</a>
                 <a href="#contact" class="advanced-menu-item">Contact</a>
                 <a href="blog.html" class="advanced-menu-item">Blogs</a>
-
             </div>
         </nav>
     </header>
+
 
     <!-- Hero Section -->
     <section id="home" class="advanced-hero">
@@ -510,6 +616,11 @@
         // Handle 404 Page
         if (window.location.pathname === '/404.html') {
             document.getElementById('404-page').style.display = 'block';
+        }
+
+        // Toggle Dropdown for Product Button
+        function toggleDropdown() {
+            document.getElementById("dropdown").classList.toggle("show");
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
