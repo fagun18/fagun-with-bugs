@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>SQA Testing Blog - Bug Matrix 🐞</title>
+    <link>https://sqatesting.com</link>
+    <description>Explore the latest blogs on SQA, QA tools, testing tools, and software testing. Stay updated with Bug Matrix's expert insights and tutorials.</description>
+    <language>en-us</language>
+    <pubDate>Tue, 27 Feb 2025 10:00:00 GMT</pubDate>
+    <lastBuildDate>Tue, 27 Feb 2025 10:00:00 GMT</lastBuildDate>
+    <generator>SQA Testing Blog Generator</generator>
+
+    <!-- Blog Post 1 -->
+    <item>
+      <title>Top 10 SQA Tools for 2025</title>
+      <link>https://sqatesting.com/Top-10-SQA-Tools-for-2025.html</link>
+      <description>Discover the top 10 SQA tools that every software tester should know about in 2024. From automation to security testing, we've got you covered.</description>
+      <pubDate>Mon, 26 Feb 2025 09:00:00 GMT</pubDate>
+      <guid>https://sqatesting.com/Top-10-SQA-Tools-for-2025.html</guid>
+    </item>
+
+    <!-- Blog Post 2 -->
+    <item>
+      <title>🌟 One Extension, Endless Possibilities!</title>
+      <link>https://sqatesting.com/bug-matrix-sqa-testing-tools.html</link>
+      <description>Tired of juggling multiple tools across different platforms? Explore Bug Matrix's solutions for a streamlined experience!</description>
+      <pubDate>Mon, 25 Feb 2025 11:00:00 GMT</pubDate>
+      <guid>https://sqatesting.com/bug-matrix-sqa-testing-tools.html</guid>
+    </item>
+
+    <!-- Blog Post 3 -->
+    <item>
+      <title>Mastering API Testing: A Comprehensive Guide</title>
+      <link>https://sqatesting.com/api-testing.html</link>
+      <description>API testing is a critical aspect of software quality assurance (SQA) that ensures the functionality, reliability, and security of APIs.</description>
+      <pubDate>Mon, 24 Feb 2025 08:00:00 GMT</pubDate>
+      <guid>https://sqatesting.com/api-testing.html</guid>
+    </item>
+
+    <!-- Add more blog posts here as you update the blog -->
+
+  </channel>
+</rss>
